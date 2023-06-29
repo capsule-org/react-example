@@ -98,13 +98,4 @@ const Menu = () => (
   )
 }
 
-const btnStyle = {
-  backgroundColor:'white',
-  color:'black',
-  borderColor:'white',
-  marginRight: '5%',
-  marginBottom: '5%',
-  fontSize: 'calc(10px + 1.5vmin)',
-}
-
 export default Navbar

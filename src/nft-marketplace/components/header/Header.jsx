@@ -74,7 +74,7 @@ const Header = (props) => {
     <div className='header section__padding'>
       <div className="header-content">
         <div>
-          {props.user === true ? <h1></h1> :<h1>Discover the potential of Capsule's SDKs to improve user experiences in crypto. Get started below!</h1>}
+          {props.user === true ? <h1>Purchase your NFT!</h1> :<h1>Discover the potential of Capsule's SDKs to improve user experiences in crypto. Get started below!</h1>}
           <img className='shake-vertical' src={capsule_logo} alt="" />
         </div>
       </div>
