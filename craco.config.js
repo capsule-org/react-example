@@ -1,5 +1,13 @@
+const webpack = require('webpack');
 module.exports = {
   webpack: {
+    plugins: {
+      add: [
+        new webpack.ProvidePlugin({
+          Buffer: ['buffer', 'Buffer'],
+        }),
+      ],
+    },
     configure: webpackConfig => {
 
       // ts-loader is required to reference external typescript projects/files (non-transpiled)

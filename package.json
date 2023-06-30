@@ -26,7 +26,8 @@
     "redux-persist": "^6.0.0",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.3",
-    "web3": "^4.0.1"
+    "web3": "^4.0.1",
+    "webpack": "^5.88.1"
   },
   "scripts": {
     "start": "PORT=3007 craco start",

@@ -22,6 +22,38 @@ import contractJson from '../../artifacts/contracts/NFT.sol/CapsuleMarketplace.j
 const CONTRACT_ADDRESS = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
 const CHAIN_ID = '31337';
 const DEFAULT_GAS_PRICE = '5';
+const DEFAULT_CONTRACT_ADDRESS = '0xc08c00e1aa97a18583dc1a72a7e9fb9ce56cfef5'
+const DEFAULT_CHAIN_ID = '11155111';
+const DEFAULT_CONTRACT_ABI = [
+  {
+    "inputs": [],
+    "name": "retrieve",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "num",
+        "type": "uint256"
+      }
+    ],
+    "name": "store",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+];
+const DEFAULT_SMART_CONTRACT_FUNCTION = 'store';
+const DEFAULT_SMART_CONTRACT_ARGS = ['808'];
 
 const NFT = ({ capsule, dispatch, loggedIn }) => {
 
@@ -31,6 +63,10 @@ const NFT = ({ capsule, dispatch, loggedIn }) => {
   const [image, setImage] = useState("");
   const [ownsNFT, setOwnsNFT] = useState(false);
   const [ownedNFT, setOwnedNFT] = useState(null);
+
+  const link = `https://sepolia.etherscan.io/address/${Object.values(capsule.getWallets())?.[0]?.address}`
+
+  const [txState, setTxState] = useState("not_sent")
 
   const web3 = new Web3(Web3.givenProvider);
   const abi = contractJson.abi;
@@ -56,32 +92,33 @@ const NFT = ({ capsule, dispatch, loggedIn }) => {
     setValue((Math.random() * 1000).toFixed(2)); // random value between 0 and 10, rounded to 2 decimal places
     setLikes(Math.floor(Math.random() * 100) + 1);
 
-    if (loggedIn) {
-      fetchOwnedNFT();
-    }
-  }, [loggedIn]);
+    // if (loggedIn) {
+    //   fetchOwnedNFT();
+    // }
+  }, []);
 
-  async function fetchOwnedNFT() {
-    try {
-      const {tokenId, name, price, likeCount} = await sendTransaction('getOwnedNFT', []);
-      setOwnedNFT({tokenId, name, price, likeCount});
-      setOwnsNFT(true);
-    } catch (error) {
-      // User doesn't own an NFT.
-      setOwnsNFT(false);
-      setOwnedNFT(null);
-    }
-  }
+  // async function fetchOwnedNFT() {
+  //   try {
+  //     const {tokenId, name, price, likeCount} = await sendTransaction('getOwnedNFT', []);
+  //     console.log(`${tokenId}, ${name}, ${price}, ${likeCount}`)
+  //     setOwnedNFT({tokenId, name, price, likeCount});
+  //     setOwnsNFT(true);
+  //   } catch (error) {
+  //     // User doesn't own an NFT.
+  //     setOwnsNFT(false);
+  //     setOwnedNFT(null);
+  //   }
+  // }
 
   function generateNFTTokenId() {
     let tokenID = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const characters = '0123456789';
     const charactersLength = characters.length;
-
+  
     for ( let i = 0; i < 32; i++ ) {
         tokenID += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
-
+  
     return tokenID;
   }
 
@@ -111,7 +148,41 @@ const NFT = ({ capsule, dispatch, loggedIn }) => {
       nonce: web3.utils.toHex(Number(nonce)),
       data: functionCallData || deployByteCode || undefined,
     }, { common: Common.custom({ chainId: Number(chainId) }) });
+
     return tx.serialize().toString('base64');
+  }
+
+  async function sendTx() {
+    if (!(await capsule.isSessionActive())) {
+      await capsule.refreshSession(true)
+    }
+    while (!(await capsule.isSessionActive())) {
+      console.log("XXXX")
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+    const walletId = capsule.getWallets()?.[Object.keys(capsule.getWallets())[0]]?.id;
+  
+    let nonce = 0;
+    try {
+      nonce = await web3.eth.getTransactionCount(Object.values(capsule.getWallets())[0].address)
+    } catch (e) {
+      console.log(e)
+    }
+    console.log(nonce, ":)")
+    const tx = await createTransaction(
+      DEFAULT_CONTRACT_ADDRESS,
+      0,
+      1400000,
+      DEFAULT_GAS_PRICE,
+      nonce.toString(),
+      DEFAULT_CHAIN_ID,
+      JSON.stringify(DEFAULT_CONTRACT_ABI),
+      DEFAULT_SMART_CONTRACT_FUNCTION,
+      DEFAULT_SMART_CONTRACT_ARGS,
+      '',
+    );
+    const res = await capsule.sendTransaction(walletId, tx, `${DEFAULT_CHAIN_ID}`);
+    console.log(res)
   }
 
   async function sendTransaction(transactionName, functionArgs) {
@@ -123,7 +194,7 @@ const NFT = ({ capsule, dispatch, loggedIn }) => {
     } catch (e) {
       console.log(e)
     }
-    console.log(nonce, ":)")
+
     const tx = await createTransaction(
       CONTRACT_ADDRESS,
       0,
@@ -150,57 +221,42 @@ const NFT = ({ capsule, dispatch, loggedIn }) => {
           <div className="card-column" >
             <div className="bids-card">
             <div className="bids-card-top">
-            {loggedIn === true && !ownsNFT ? <div style={{ 
+            {loggedIn === true ? <div style={{ 
                 display: 'flex', 
                 flexDirection: 'row', 
-                justifyContent: 'flex-end', 
+                justifyContent: 'space-between', 
               }}>
+                {txState === "sent" && (<div className="item-content-detail">
+              <p>Track your Tx <a href={link}>here</a></p>
+            </div>)}
                 <Button 
-                  width="100px" 
+                  width="150px" 
                   height="50px" 
                   backgroundColor={'orange'} 
                   color={'white'}
                   onClick={
                     async () => {
-                      const tokenId = generateNFTTokenId();
-                      await sendTransaction('buyNFT', [tokenId, title, web3.utils.toWei(value.toString(), 'ether'), likes]);
-                      fetchOwnedNFT();
+                      if (txState === 'not_sent') {
+                        setTxState("init")
+                        console.log(capsule.getWallets())
+                        await sendTx()
+                        setTxState("sent")
+                      }
                     }
                   }
                 >
                   <Text 
                     marginBottom={12}
                   >
-                    Purchase
+                    {{
+                    "not_sent": `Buy For ${value} ETH`,
+                    "init": "Pending...",
+                    "sent": "Bought!",
+              }[txState]}
                   </Text>
                 </Button>
-                </div> : 
-                ownsNFT ? 
-                  <div>
-                    <h3>You already own an NFT:</h3>
-                    <p>Title: {ownedNFT.name}</p>
-                    <p>Price: {ownedNFT.price}</p>
-                    <p>Likes: {ownedNFT.likeCount}</p>
-                    <Button 
-                      width="100px" 
-                      height="50px" 
-                      backgroundColor={'orange'} 
-                      color={'white'}
-                      onClick={
-                        async () => {
-                          await sendTransaction('unBuyNFT', []);
-                          fetchOwnedNFT();
-                        }
-                      }
-                    >
-                      <Text 
-                        marginBottom={12}
-                      >
-                        Sell
-                      </Text>
-                    </Button>
-                  </div>
-                : null
+                </div> 
+                :  null
               }
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                       <p style={{ fontSize: '2em' }}>{title}</p>
