@@ -8,7 +8,9 @@ import './home.css'
 
 const Home = ({ dispatch }) => {
 
-  const capsule = new Capsule(Environment.SANDBOX);
+  const capsule = new Capsule(Environment.SANDBOX, undefined, {
+    offloadMPCComputationURL: 'https://partner-mpc-computation.sandbox.usecapsule.com',
+  });
 
   return <div className='center-content'>
     <Header />

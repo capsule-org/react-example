@@ -125,7 +125,9 @@ function Helper() {
             const newAddress = Object.values(capsule.getWallets())?.[0]?.address;
             setAddress(newAddress);
             setModalIsOpen(false);
-            loginCallback(true);
+            if (newAddress) {
+              loginCallback(true);
+            }
           }}
           theme={newTheme}
           capsule={capsule}

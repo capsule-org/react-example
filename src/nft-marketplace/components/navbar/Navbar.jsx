@@ -6,10 +6,9 @@ import {  Link } from "react-router-dom";
 
 const Menu = () => (
   <>
-     <Link to="https://github.com/capsule-org/web-sdk"><p>View GitHub</p> </Link>
-     <Link to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'><p>Join Beta</p></Link>
-     <Link to='https://usecapsule.com'><p>Website</p></Link>
-     <Link to='https://docs-preview.usecapsule.com/'><p>View Docs</p></Link>
+     <Link target="_blank" rel="noreferrer" to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'><p>Join Beta</p></Link>
+     <Link target="_blank" rel="noreferrer" to='https://usecapsule.com'><p>Website</p></Link>
+     <Link target="_blank" rel="noreferrer" to='https://docs-preview.usecapsule.com/'><p>View Docs</p></Link>
   </>
  )
 
