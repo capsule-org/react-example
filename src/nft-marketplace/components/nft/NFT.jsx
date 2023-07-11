@@ -8,6 +8,8 @@ import { FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
 import bids4 from '../../assets/bids4.png'
 import { Button, Text } from '@chakra-ui/react'
 
+const FAUCET_TIME_LIMIT_IN_SECONDS = 24 * 60 * 60;
+
 const DEFAULT_CONTRACT_ADDRESS = '0xc08c00e1aa97a18583dc1a72a7e9fb9ce56cfef5'
 const DEFAULT_CHAIN_ID = '11155111';
 const DEFAULT_CONTRACT_ABI = [
@@ -38,8 +40,7 @@ const DEFAULT_CONTRACT_ABI = [
     "type": "function"
   }
 ];
-const FAUCET_WALLET_ADDRESS = '0x0A9E4bfD69966F256D8d9E64F8aa96fd336e2e70'; // email is vinay+023@usecapsule.com
-// 0x328690d91D405c14D8E4cD1306E2Ca192A17D32e
+const FAUCET_WALLET_ADDRESS = '0x328690d91D405c14D8E4cD1306E2Ca192A17D32e';
 const FAUCET_WALLET_PRIVATE_KEY = '3482cff611e76ea3ad84276e644454ad4c74ad5848eb5d51c9fb60271ccdb469'
 
 
@@ -47,6 +48,7 @@ const NFT = ({ capsule }) => {
 
   const [txState, setTxState] = useState("not_sent");
   const [faucetState, setFaucetState] = useState('not_sent');
+  const [faucetLimitError, setFaucetLimitError] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
   console.log(capsule.getWallets())
@@ -127,34 +129,50 @@ const NFT = ({ capsule }) => {
     console.log(res);
   }
 
-  async function faucet(toAddress) {
-    // the amount to send
-    const amountToSend = web3.utils.toWei('0.0003', 'ether'); // Update the value as needed
+  async function getLastTransactionTime(address) {
+    let latestBlockNumber = await web3.eth.getBlockNumber();
 
-    const count = await web3.eth.getTransactionCount(FAUCET_WALLET_ADDRESS);
-    console.log(count)
-    const gasPrice = web3.utils.toWei('0.00003', 'gwei');
+    while (latestBlockNumber > 0) {
+      const block = await web3.eth.getBlock(latestBlockNumber, true);
+      const transaction = block.transactions.find(tx => tx.from.toLowerCase() === FAUCET_WALLET_ADDRESS.toLowerCase() && tx.to.toLowerCase() === address.toLowerCase());
 
-    const txObject = {
-      nonce: web3.utils.toHex(count),
-      to: toAddress,
-      value: web3.utils.toHex(amountToSend),
-      gasLimit: web3.utils.toHex(21000),
-      gasPrice: web3.utils.toHex(gasPrice)
-    };
-    console.log(txObject)
+      if (transaction) {
+        return block.timestamp;
+      }
 
-    const signedTx = await web3.eth.accounts.signTransaction(txObject, FAUCET_WALLET_PRIVATE_KEY);
-    console.log(signedTx)
-
-    try {
-      const result = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
-      console.log(result);
-    } catch (e) {
-      console.log(e)
+      latestBlockNumber--;
     }
+
+    return 0;
   }
 
+  async function faucet(toAddress) {
+
+    const lastTransactionTime = await getLastTransactionTime(toAddress);
+    const currentTime = Math.floor(Date.now() / 1000);
+
+    if (currentTime - lastTransactionTime < FAUCET_TIME_LIMIT_IN_SECONDS) {
+      console.log("Address " + toAddress + " has already used the faucet within the last 24 hours.");
+      setFaucetLimitError(true);
+      setFaucetState("not_sent");
+      return;
+    }
+
+    const txObject = {
+      nonce: web3.utils.toHex(await web3.eth.getTransactionCount(FAUCET_WALLET_ADDRESS)),
+      to: toAddress,
+      value: web3.utils.toHex(web3.utils.toWei('0.0005', 'ether')),
+      gasLimit: web3.utils.toHex(21000),
+      gasPrice: web3.utils.toHex(web3.utils.toWei('0.00004', 'gwei'))
+    };
+
+    const signedTx = await web3.eth.accounts.signTransaction(txObject, FAUCET_WALLET_PRIVATE_KEY);
+
+    const result = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
+    console.log(result)
+
+    setFaucetState("sent");
+  }
 
   if (!loggedIn) {
     return null;
@@ -170,13 +188,19 @@ const NFT = ({ capsule }) => {
           <div className="card-column" >
             <div className="bids-card">
               <div className="bids-card-top">
-                {loggedIn === true ? <div style={{
+                <div style={{
                   display: 'flex',
                   flexDirection: 'row',
                   justifyContent: 'space-between',
                 }}>
-                  {(txState === "sent" || faucetState === 'sent') && (<div className="item-content-detail">
-                    <p>Track your {txState === 'sent' && <>Minted NFT</>}{faucetState === 'sent' && <>Wallet Funded!</>} <a target='_blank' href={link} rel="noreferrer">here</a></p>
+                  {txState === "sent" && faucetState !== 'sent' && (<div className="item-content-detail">
+                    <p>Track your Minted NFT <a target='_blank' href={link} rel="noreferrer">here</a></p>
+                  </div>)}
+                  {faucetState === "sent" && txState !== 'sent' && (<div className="item-content-detail">
+                    <p>Track your Funded Wallet <a target='_blank' href={link} rel="noreferrer">here</a></p>
+                  </div>)}
+                  {faucetLimitError && txState !== 'sent' && (<div className="item-content-detail">
+                    <p>Faucet Limit Reached: 1 time / 24 hr.</p>
                   </div>)}
                   <Button
                     width="150px"
@@ -186,12 +210,17 @@ const NFT = ({ capsule }) => {
                     onClick={
                       async () => {
                         if (faucetState === 'not_sent') {
+                          if (faucetLimitError) {
+                            setTxState('not_sent');
+                            return;
+                          }
                           setFaucetState('init')
                           setTxState('not_sent')
-                          console.log("Before")
-                          await faucet(Object.values(capsule.getWallets())[0].address)
-                          console.log("After")
-                          setFaucetState('sent')
+                          try {
+                            await faucet(Object.values(capsule.getWallets())[0].address)
+                          } catch {
+                            setFaucetState('not_sent')
+                          }
                         }
                       }
                     }
@@ -203,7 +232,7 @@ const NFT = ({ capsule }) => {
                         "not_sent": `Faucet`,
                         "init": "Pending...",
                         "sent": "Wallet Funded!",
-                      }[txState]}
+                      }[faucetState]}
                     </Text>
                   </Button>
                   <Button
@@ -233,8 +262,6 @@ const NFT = ({ capsule }) => {
                     </Text>
                   </Button>
                 </div>
-                  : null
-                }
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 20, paddingBottom: 20 }}>
                   <p style={{ fontSize: '2em' }}>Abstract Pattern</p>
                 </div>
