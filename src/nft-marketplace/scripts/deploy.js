@@ -1,16 +1,17 @@
 const hre = require("hardhat");
 
 async function main() {
-    const NFT = await hre.ethers.getContractFactory("CapsuleMarketplace");
-    const nft = await NFT.deploy();
-    await nft.deployed();
+  const CapsuleMarketplace = await hre.ethers.getContractFactory("CapsuleMarketplace");
+  const capsuleMarketplace = await CapsuleMarketplace.deploy();
 
-    console.log("Capsule Marketplace deployed to:", nft.address);
+  await capsuleMarketplace.deployed();
+
+  console.log("CapsuleMarketplace deployed to:", capsuleMarketplace.address);
 }
 
 main()
-    .then(() => process.exit(0))
-    .catch((error) => {
-        console.error(error);
-        process.exit(1);
-    });
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

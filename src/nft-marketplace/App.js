@@ -1,13 +1,9 @@
 import './App.css';
-import {Navbar} from './components'
-import {Home} from './pages'
-import {Routes, Route} from "react-router-dom";
+import { Navbar } from './components'
+import { Home } from './pages'
+import { Routes, Route } from "react-router-dom";
 import { useEffect } from 'react';
-import {useLocation} from "react-router";
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import { PersistGate } from 'redux-persist/integration/react';
-import { persistStore } from 'redux-persist';
+import { useLocation } from "react-router";
 
 function useLocationEffect(callback) {
   const location = useLocation();
@@ -25,20 +21,17 @@ function ScrollToTop() {
   return (null);
 }
 
-const persistor = persistStore(store);
 
 function App() {
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <ScrollToTop/>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </PersistGate>
-    </Provider>
+    <div>
+      <ScrollToTop />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </div>
   );
 }
 
