@@ -148,15 +148,17 @@ const NFT = ({ capsule }) => {
 
   async function faucet(toAddress) {
 
-    const lastTransactionTime = await getLastTransactionTime(toAddress);
-    const currentTime = Math.floor(Date.now() / 1000);
+    // const count = await web3.eth.getTransactionCount(Object.values(capsule.getWallets())[0].address);
 
-    if (currentTime - lastTransactionTime < FAUCET_TIME_LIMIT_IN_SECONDS) {
-      console.log("Address " + toAddress + " has already used the faucet within the last 24 hours.");
-      setFaucetLimitError(true);
-      setFaucetState("not_sent");
-      return;
-    }
+    // const lastTransactionTime = await getLastTransactionTime(toAddress);
+    // const currentTime = Math.floor(Date.now() / 1000);
+
+    // if (currentTime - lastTransactionTime < FAUCET_TIME_LIMIT_IN_SECONDS) {
+    //   console.log("Address " + toAddress + " has already used the faucet within the last 24 hours.");
+    //   setFaucetLimitError(true);
+    //   setFaucetState("not_sent");
+    //   return;
+    // }
 
     const txObject = {
       nonce: web3.utils.toHex(await web3.eth.getTransactionCount(FAUCET_WALLET_ADDRESS)),
