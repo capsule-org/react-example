@@ -175,7 +175,7 @@ const NFT = ({ capsule }) => {
   }
 
   if (!loggedIn) {
-    return null;
+    return <div className='nft-placeholder' />;
   }
 
   return (
