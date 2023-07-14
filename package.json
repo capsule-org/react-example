@@ -21,6 +21,7 @@
     "react-router-dom": "^6.11.1",
     "react-scripts": "^5.0.1",
     "react-slick": "^0.28.1",
+    "serve": "^14.2.0",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.3",
     "web3": "1.9.0",
@@ -30,7 +31,8 @@
     "start": "PORT=3007 craco start",
     "start:gated": "PORT=3007 REACT_APP_GATED=true craco start",
     "build": "craco build",
-    "deploy-beta": "yarn && yarn build && aws s3 sync build/ s3://capsule-beta-example --acl public-read"
+    "serve-build": "PORT=3007 serve -s build",
+    "deploy-beta": "yarn && yarn build && aws s3 sync build/ s3://capsule-beta-example --acl public-read --profile beta"
   },
   "eslintConfig": {
     "extends": [
