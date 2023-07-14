@@ -6,9 +6,9 @@ import './home.css'
 
 const Home = () => {
 
-  const capsule = new Capsule(Environment.SANDBOX, undefined, {
+  const capsule = new Capsule(Environment.BETA, undefined, {
     // offloadMPCComputationURL: 'http://localhost:9009'
-    offloadMPCComputationURL: 'https://partner-mpc-computation.sandbox.usecapsule.com',
+    offloadMPCComputationURL: 'https://partner-mpc-computation.beta.usecapsule.com',
   });
 
   return <div className='center-content'>
