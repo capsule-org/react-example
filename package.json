@@ -29,7 +29,8 @@
   "scripts": {
     "start": "PORT=3007 craco start",
     "start:gated": "PORT=3007 REACT_APP_GATED=true craco start",
-    "build": "craco build"
+    "build": "craco build",
+    "deploy-beta": "yarn && yarn build && aws s3 sync build/ s3://capsule-beta-example --acl public-read"
   },
   "eslintConfig": {
     "extends": [
