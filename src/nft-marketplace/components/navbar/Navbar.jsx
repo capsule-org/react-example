@@ -1,27 +1,20 @@
-import React,{ useState} from 'react'
+import React, { useState } from 'react'
 import './navbar.css'
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import logo from './logo.svg'
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Menu = () => (
   <>
-     <Link target="_blank" rel="noreferrer" to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'><p>Join Beta</p></Link>
-     <Link target="_blank" rel="noreferrer" to='https://usecapsule.com'><p>Website</p></Link>
-     <Link target="_blank" rel="noreferrer" to='https://docs-preview.usecapsule.com/'><p>View Docs</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'><p>Join Beta</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://usecapsule.com'><p>Website</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://docs-preview.usecapsule.com/'><p>View Docs</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://github.com/capsule-org/capsule-example'><p>View Demo App Github</p></Link>
   </>
- )
+)
 
- const Navbar = () => {
-  const [toggleMenu,setToggleMenu] = useState(false)
-  const [user,setUser] = useState(false)
-
-  const handleLogout = () => {
-    setUser(false);
-  }
-  const handleLogin = () => {
-    setUser(true);
-  }
+const Navbar = () => {
+  const [toggleMenu, setToggleMenu] = useState(false)
 
 
   return (
@@ -34,63 +27,19 @@ const Menu = () => (
           </Link>
         </div>
         <div className="navbar-links_container">
-          {/*<input type="text" placeholder='Search Item Here' autoFocus={true} />*/}
-         <Menu />
-         {user && <Link to="/"><p onClick={handleLogout}>Logout</p></Link> }
-
+          <Menu />
         </div>
-      </div>
-      <div className="navbar-sign">
-      {/*{user ? (*/}
-      {/*  <>*/}
-      {/*   <Link to="/create">*/}
-      {/*    <button type='button' className='primary-btn' >Create</button>*/}
-      {/*  </Link>*/}
-      {/*  <button type='button' className='secondary-btn'>Connect</button>*/}
-      {/*  </>*/}
-      {/*): (*/}
-      {/*  <>*/}
-      {/*  <Link to="/login">*/}
-      {/*   <button type='button' className='primary-btn' onClick={handleLogin} >Sign In</button>*/}
-      {/*  </Link>*/}
-      {/*  <Link to="/register">*/}
-      {/*    <button type='button' className='secondary-btn'>Sign Up</button>*/}
-      {/*  </Link>*/}
-        {/* <CapsuleButton capsule={capsule} appName={"NFT marketplace"} /> */}
-      {/*  </>*/}
-      {/*)}*/}
-
       </div>
       <div className="navbar-menu">
         {toggleMenu ?
-        <RiCloseLine  color="#fff" size={27} onClick={() => setToggleMenu(false)} />
-        : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />}
+          <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />
+          : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />}
         {toggleMenu && (
           <div className="navbar-menu_container scale-up-center" >
             <div className="navbar-menu_container-links">
-             <Menu />
+              <Menu />
             </div>
-            <div className="navbar-menu_container-links-sign">
-            {user ? (
-              <>
-              <Link to="/create">
-                <button type='button' className='primary-btn' >Create</button>
-              </Link>
-              <button type='button' className='secondary-btn'>Connect</button>
-              </>
-            ): (
-              <>
-              <Link to="/login">
-              <button type='button' className='primary-btn' onClick={handleLogin} >Sign In</button>
-              </Link>
-              <Link to="/register">
-                <button type='button' className='secondary-btn'>Sign Up</button>
-              </Link>
-              </>
-            )}
-
-            </div>
-            </div>
+          </div>
         )}
       </div>
     </div>

@@ -7,13 +7,13 @@
   width: 100%;
 }
 
-.bids-container-text h1 {
+.bids-container-text li {
   font-family: var(--font-family);
-  font-weight: 600;
-  font-size: 28px;
+  font-weight: 400;
+  font-size: 20px;
   line-height: 42px;
   color: #FFFFFF;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .bids-container-card {

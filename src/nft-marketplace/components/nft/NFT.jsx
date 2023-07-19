@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react'
 import './nft.css'
 import Web3 from 'web3'
 import { FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
-import bids4 from '../../assets/bids4.png'
+import bids4 from '../../assets/wordmark_white.png'
 import { Button, Text } from '@chakra-ui/react'
 
 const FAUCET_TIME_LIMIT_IN_SECONDS = 24 * 60 * 60;
@@ -48,7 +48,6 @@ const NFT = ({ capsule }) => {
 
   const [txState, setTxState] = useState("not_sent");
   const [faucetState, setFaucetState] = useState('not_sent');
-  const [faucetLimitError, setFaucetLimitError] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
   console.log(capsule.getWallets())
@@ -129,36 +128,7 @@ const NFT = ({ capsule }) => {
     console.log(res);
   }
 
-  async function getLastTransactionTime(address) {
-    let latestBlockNumber = await web3.eth.getBlockNumber();
-
-    while (latestBlockNumber > 0) {
-      const block = await web3.eth.getBlock(latestBlockNumber, true);
-      const transaction = block.transactions.find(tx => tx.from.toLowerCase() === FAUCET_WALLET_ADDRESS.toLowerCase() && tx.to.toLowerCase() === address.toLowerCase());
-
-      if (transaction) {
-        return block.timestamp;
-      }
-
-      latestBlockNumber--;
-    }
-
-    return 0;
-  }
-
   async function faucet(toAddress) {
-
-    // const count = await web3.eth.getTransactionCount(Object.values(capsule.getWallets())[0].address);
-
-    // const lastTransactionTime = await getLastTransactionTime(toAddress);
-    // const currentTime = Math.floor(Date.now() / 1000);
-
-    // if (currentTime - lastTransactionTime < FAUCET_TIME_LIMIT_IN_SECONDS) {
-    //   console.log("Address " + toAddress + " has already used the faucet within the last 24 hours.");
-    //   setFaucetLimitError(true);
-    //   setFaucetState("not_sent");
-    //   return;
-    // }
 
     const txObject = {
       nonce: web3.utils.toHex(await web3.eth.getTransactionCount(FAUCET_WALLET_ADDRESS)),
@@ -183,8 +153,11 @@ const NFT = ({ capsule }) => {
   return (
     <div className='bids section__padding'>
       <div className="bids-container">
-        <div className="bids-container-text">
-          <h1>Check out this NFT!</h1>
+        <div className="bids-container-text" style={{ textAlign: 'center' }}>
+          <ol>
+            <li>Faucet your wallet</li>
+            <li>Mint the NFT</li>
+          </ol>
         </div>
         <div className="bids-container-card">
           <div className="card-column" >
@@ -195,27 +168,18 @@ const NFT = ({ capsule }) => {
                   flexDirection: 'row',
                   justifyContent: 'space-between',
                 }}>
-                  {txState === "sent" && faucetState !== 'sent' && (<div className="item-content-detail">
-                    <p>Track your Minted NFT <a target='_blank' href={link} rel="noreferrer">here</a></p>
-                  </div>)}
-                  {faucetState === "sent" && txState !== 'sent' && (<div className="item-content-detail">
-                    <p>Track your Funded Wallet <a target='_blank' href={link} rel="noreferrer">here</a></p>
-                  </div>)}
-                  {faucetLimitError && txState !== 'sent' && (<div className="item-content-detail">
-                    <p>Faucet Limit Reached: 1 time / 24 hr.</p>
-                  </div>)}
                   <Button
                     width="150px"
                     height="50px"
-                    backgroundColor={'orange'}
+                    backgroundColor={{
+                      "not_sent": 'orange',
+                      "init": 'red',
+                      "sent": 'green',
+                    }[faucetState]}
                     color={'white'}
                     onClick={
                       async () => {
                         if (faucetState === 'not_sent') {
-                          if (faucetLimitError) {
-                            setTxState('not_sent');
-                            return;
-                          }
                           setFaucetState('init')
                           setTxState('not_sent')
                           try {
@@ -237,10 +201,21 @@ const NFT = ({ capsule }) => {
                       }[faucetState]}
                     </Text>
                   </Button>
+                  {txState === "sent" && faucetState !== 'sent' && (<div style={{ color: "white", marginBottom: 20 }}>
+                    <p>Track your minted NFT <a target='_blank' href={link} rel="noreferrer" style={{ color: "white" }}><u>here</u></a></p>
+                  </div>)}
+                  {faucetState === "sent" && txState !== 'sent' && (<div style={{ color: "white", marginBottom: 20 }}>
+                    <p>Track your funded wallet <a target='_blank' href={link} rel="noreferrer" style={{ color: "white" }}><u>here</u></a></p>
+                  </div>
+                  )}
                   <Button
                     width="150px"
                     height="50px"
-                    backgroundColor={'orange'}
+                    backgroundColor={{
+                      "not_sent": 'orange',
+                      "init": 'red',
+                      "sent": 'green',
+                    }[txState]}
                     color={'white'}
                     onClick={
                       async () => {
@@ -265,7 +240,7 @@ const NFT = ({ capsule }) => {
                   </Button>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 20, paddingBottom: 20 }}>
-                  <p style={{ fontSize: '2em' }}>Abstract Pattern</p>
+                  <p style={{ fontSize: '2em' }}>Capsule NFT</p>
                 </div>
                 <img src={bids4} alt="" />
               </div>
