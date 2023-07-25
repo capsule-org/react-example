@@ -228,10 +228,10 @@ const NFT = ({ capsule }) => {
             justifyContent: 'space-between',
           }}>
             {txState === "sent" && faucetState !== 'sent' && (<div style={{ color: "white", marginBottom: 20 }}>
-              <p>Track your minted NFT <a target='_blank' href={link} rel="noreferrer" style={{ color: "white" }}><u>here</u></a></p>
+              <p style={{ fontSize: '18px', fontWeight: 'bold', fontStyle: "italic" }}>Track your minted NFT <a target='_blank' href={link} rel="noreferrer" style={{ color: "white" }}><u>here</u></a></p>
             </div>)}
             {faucetState === "sent" && txState !== 'sent' && (<div style={{ color: "white", marginBottom: 20 }}>
-              <p>Track your funded wallet <a target='_blank' href={link} rel="noreferrer" style={{ color: "white" }}><u>here</u></a></p>
+              <p style={{ fontSize: '18px', fontWeight: 'bold', fontStyle: "italic" }}>Track your funded wallet <a target='_blank' href={link} rel="noreferrer" style={{ color: "white" }}><u>here</u></a></p>
             </div>
             )}
           </div>
