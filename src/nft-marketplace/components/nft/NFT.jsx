@@ -144,106 +144,102 @@ const NFT = ({ capsule }) => {
     setFaucetState("sent");
   }
 
-  if (!loggedIn) {
-    return <div className="nft-text-container">
-      <p>
-        This is a test application to illustrate Capsule's SDK and
-        is intended to be used only for testing purposes. Assets used herein are on
-        the Sepolia testnet and valueless. Additionally, this demo app is connected
-        to a beta environment and test accounts created may be occasionally deleted.
-      </p>
-    </div>
-  }
-
   return (
-    <div className='bids section__padding nft-center-button'>
-      <div className="bids-container">
-        <div className="bids-container-text" style={{ textAlign: 'center' }}>
-          <ol>
-            <li>Fund your wallet</li>
-            <li>Mint the NFT</li>
-          </ol>
+    <>
+      {loggedIn && <div className='bids section__padding nft-center-button'>
+        <div className="bids-container">
+          <div className='instruction-style'>Instructions</div>
+          <div className="bids-container-text" style={{ textAlign: 'center' }}>
+            <ol>
+              <li>
+                <span className='list-text'><span class="number">1.</span> Fund your wallet</span>
+                <Button
+                  width="150px"
+                  height="50px"
+                  marginLeft={32}
+                  backgroundColor={{
+                    "not_sent": 'gray',
+                    "init": 'blue',
+                    "sent": 'green',
+                  }[faucetState]}
+                  color={'white'}
+                  onClick={
+                    async () => {
+                      if (faucetState === 'not_sent') {
+                        setFaucetState('init')
+                        setTxState('not_sent')
+                        try {
+                          await faucet(Object.values(capsule.getWallets())[0].address)
+                        } catch {
+                          setFaucetState('not_sent')
+                        }
+                      }
+                    }}
+                >
+                  <Text
+                    fontSize="14px"
+                  >
+                    {{
+                      "not_sent": `Faucet`,
+                      "init": "Pending...",
+                      "sent": "Wallet Funded!",
+                    }[faucetState]}
+                  </Text>
+                </Button>
+              </li>
+              <li>
+                <span className='list-text'><span class="number">2.</span> Mint the NFT</span>
+                <Button
+                  width="150px"
+                  height="50px"
+                  backgroundColor={{
+                    "not_sent": 'gray',
+                    "init": 'blue',
+                    "sent": 'green',
+                  }[txState]}
+                  marginLeft={32}
+                  color={'white'}
+                  onClick={
+                    async () => {
+                      if (txState === 'not_sent') {
+                        setTxState("init")
+                        setFaucetState('not_sent')
+                        await sendTx()
+                        setTxState("sent")
+                      }
+                    }}
+                >
+                  <Text
+                    fontSize="14px"
+                  >
+                    {{
+                      "not_sent": `Mint NFT!`,
+                      "init": "Pending...",
+                      "sent": "Bought!",
+                    }[txState]}
+                  </Text>
+                </Button>
+              </li>
+            </ol>
+          </div>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+            {txState === "sent" && faucetState !== 'sent' && (<div style={{ color: "white", marginBottom: 20 }}>
+              <p>Track your minted NFT <a target='_blank' href={link} rel="noreferrer" style={{ color: "white" }}><u>here</u></a></p>
+            </div>)}
+            {faucetState === "sent" && txState !== 'sent' && (<div style={{ color: "white", marginBottom: 20 }}>
+              <p>Track your funded wallet <a target='_blank' href={link} rel="noreferrer" style={{ color: "white" }}><u>here</u></a></p>
+            </div>
+            )}
+          </div>
         </div>
         <div className="bids-container-card">
-          <div className="card-column" >
+          <div className="card-column">
             <div className="bids-card">
               <div className="bids-card-top">
-                <div style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}>
-                  <Button
-                    width="150px"
-                    height="50px"
-                    backgroundColor={{
-                      "not_sent": 'gray',
-                      "init": 'blue',
-                      "sent": 'green',
-                    }[faucetState]}
-                    color={'white'}
-                    onClick={
-                      async () => {
-                        if (faucetState === 'not_sent') {
-                          setFaucetState('init')
-                          setTxState('not_sent')
-                          try {
-                            await faucet(Object.values(capsule.getWallets())[0].address)
-                          } catch {
-                            setFaucetState('not_sent')
-                          }
-                        }
-                      }
-                    }
-                  >
-                    <Text
-                      marginBottom={12}
-                    >
-                      {{
-                        "not_sent": `Faucet`,
-                        "init": "Pending...",
-                        "sent": "Wallet Funded!",
-                      }[faucetState]}
-                    </Text>
-                  </Button>
-                  {txState === "sent" && faucetState !== 'sent' && (<div style={{ color: "white", marginBottom: 20 }}>
-                    <p>Track your minted NFT <a target='_blank' href={link} rel="noreferrer" style={{ color: "white" }}><u>here</u></a></p>
-                  </div>)}
-                  {faucetState === "sent" && txState !== 'sent' && (<div style={{ color: "white", marginBottom: 20 }}>
-                    <p>Track your funded wallet <a target='_blank' href={link} rel="noreferrer" style={{ color: "white" }}><u>here</u></a></p>
-                  </div>
-                  )}
-                  <Button
-                    width="150px"
-                    height="50px"
-                    backgroundColor={{
-                      "not_sent": 'gray',
-                      "init": 'blue',
-                      "sent": 'green',
-                    }[txState]}
-                    color={'white'}
-                    onClick={
-                      async () => {
-                        if (txState === 'not_sent') {
-                          setTxState("init");
-                          setFaucetState('not_sent');
-                          await sendTx()
-                          setTxState("sent");
-                        }
-                      }
-                    }
-                  >
-                    <Text
-                      marginBottom={12}
-                    >
-                      {{
-                        "not_sent": `Mint NFT!`,
-                        "init": "Pending...",
-                        "sent": "Bought!",
-                      }[txState]}
-                    </Text>
-                  </Button>
-                </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 20, paddingBottom: 20 }}>
                   <p style={{ fontSize: '2em' }}>Capsule NFT</p>
                 </div>
@@ -252,8 +248,16 @@ const NFT = ({ capsule }) => {
             </div>
           </div>
         </div>
+      </div>}
+      <div className="nft-text-container">
+        <p>
+          This is a test application to illustrate Capsule's SDK and
+          is intended to be used only for testing purposes. Assets used herein are on
+          the Sepolia testnet and valueless. Additionally, this demo app is connected
+          to a beta environment and test accounts created may be occasionally deleted.
+        </p>
       </div>
-    </div>
+    </>
   )
 }
 
