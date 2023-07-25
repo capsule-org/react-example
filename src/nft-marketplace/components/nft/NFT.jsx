@@ -1,12 +1,12 @@
 /* eslint-disable import/first */
 import { Buffer } from 'buffer'
 global.Buffer = Buffer
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './nft.css'
 import Web3 from 'web3'
 import { FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
 import bids4 from '../../assets/wordmark_white.png'
-import { Button, Text } from '@chakra-ui/react'
+import { Button, Text, Tooltip } from '@chakra-ui/react'
 
 const DEFAULT_CONTRACT_ADDRESS = '0xc08c00e1aa97a18583dc1a72a7e9fb9ce56cfef5'
 const DEFAULT_CHAIN_ID = '11155111';
@@ -47,13 +47,21 @@ const NFT = ({ capsule }) => {
   const [txState, setTxState] = useState("not_sent");
   const [faucetState, setFaucetState] = useState('not_sent');
   const [loggedIn, setLoggedIn] = useState(false);
+  const [hasUsedFaucet, setHasUsedFaucet] = useState(false);
 
-  console.log(capsule.getWallets())
+  let prevWalletAddress = useRef();
 
   useEffect(() => {
     const updateLoginStatus = async () => {
       const isLoggedIn = await capsule.isSessionActive();
       setLoggedIn(isLoggedIn);
+
+      const currentWalletAddress = Object.values(capsule.getWallets())?.[0]?.address;
+      if (currentWalletAddress && currentWalletAddress !== prevWalletAddress.current) {
+        const faucetUsed = await hasWalletUsedFaucet();
+        setHasUsedFaucet(faucetUsed);
+        prevWalletAddress.current = currentWalletAddress;
+      }
     };
 
     updateLoginStatus();
@@ -64,6 +72,31 @@ const NFT = ({ capsule }) => {
     // Clear the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, []);
+
+  async function hasWalletUsedFaucet() {
+    const etherscanAPIKey = 'TE5TTNWIEHHT9C6N4CQU1GZASIN864UN8U';
+    const walletAddress = Object.values(capsule.getWallets())?.[0]?.address;
+    const apiLink = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc&apikey=${etherscanAPIKey}`;
+
+    try {
+      const response = await fetch(apiLink);
+      const data = await response.json();
+
+      for (const transaction of data.result) {
+        if (transaction.from.toLowerCase() === FAUCET_WALLET_ADDRESS.toLowerCase()) {
+          console.log("Faucet Used")
+          return true;
+        }
+      }
+
+      console.log("Faucet not used");
+      return false;
+    } catch (error) {
+      console.error('Failed to fetch transactions: ', error);
+      return false;
+    }
+  }
+
 
   const link = `https://sepolia.etherscan.io/address/${Object.values(capsule.getWallets())?.[0]?.address}`
   const web3 = new Web3('https://sepolia.infura.io/v3/961364684c7346c080994baab1469ea8');
@@ -142,6 +175,9 @@ const NFT = ({ capsule }) => {
     console.log(result)
 
     setFaucetState("sent");
+    setTimeout(() => {
+      setHasUsedFaucet(true);
+    }, 3000);
   }
 
   return (
@@ -153,72 +189,77 @@ const NFT = ({ capsule }) => {
             <ol>
               <li>
                 <span className='list-text'><span class="number">1.</span> Fund your wallet</span>
-                <Button
-                  width="150px"
-                  height="50px"
-                  marginLeft={32}
-                  backgroundColor={{
-                    "not_sent": 'gray',
-                    "init": 'blue',
-                    "sent": 'green',
-                  }[faucetState]}
-                  color={'white'}
-                  onClick={
-                    async () => {
-                      if (faucetState === 'not_sent') {
-                        setFaucetState('init')
-                        setTxState('not_sent')
-                        try {
-                          await faucet(Object.values(capsule.getWallets())[0].address)
-                        } catch {
-                          setFaucetState('not_sent')
-                        }
-                      }
-                    }}
-                >
-                  <Text
-                    fontSize="14px"
-                  >
-                    {{
-                      "not_sent": `Faucet`,
-                      "init": "Pending...",
-                      "sent": "Wallet Funded!",
+                <Tooltip placement='right' color="white" label="We only allow one faucet call per wallet." isDisabled={!hasUsedFaucet}>
+                  <Button
+                    width="150px"
+                    height="50px"
+                    marginLeft={32}
+                    backgroundColor={hasUsedFaucet ? "orange" : {
+                      "not_sent": 'gray',
+                      "init": 'blue',
+                      "sent": 'green',
                     }[faucetState]}
-                  </Text>
-                </Button>
+                    isDisabled={hasUsedFaucet}
+                    color={'white'}
+                    onClick={
+                      async () => {
+                        if (!hasUsedFaucet && faucetState === 'not_sent') {
+                          setFaucetState('init')
+                          setTxState('not_sent')
+                          try {
+                            await faucet(Object.values(capsule.getWallets())[0].address)
+                          } catch {
+                            setFaucetState('not_sent')
+                          }
+                        }
+                      }}
+                  >
+                    <Text
+                      fontSize="14px"
+                    >
+                      {hasUsedFaucet ? "Faucet Used!" : {
+                        "not_sent": `Faucet`,
+                        "init": "Pending...",
+                        "sent": "Wallet Funded!",
+                      }[faucetState]}
+                    </Text>
+                  </Button>
+                </Tooltip>
               </li>
               <li>
                 <span className='list-text'><span class="number">2.</span> Mint the NFT</span>
-                <Button
-                  width="150px"
-                  height="50px"
-                  backgroundColor={{
-                    "not_sent": 'gray',
-                    "init": 'blue',
-                    "sent": 'green',
-                  }[txState]}
-                  marginLeft={32}
-                  color={'white'}
-                  onClick={
-                    async () => {
-                      if (txState === 'not_sent') {
-                        setTxState("init")
-                        setFaucetState('not_sent')
-                        await sendTx()
-                        setTxState("sent")
-                      }
-                    }}
-                >
-                  <Text
-                    fontSize="14px"
-                  >
-                    {{
-                      "not_sent": `Mint NFT!`,
-                      "init": "Pending...",
-                      "sent": "Bought!",
+                <Tooltip placement='right' color="white" label="Congratulations! Refresh the page to mint again." isDisabled={txState !== 'sent'}>
+                  <Button
+                    width="150px"
+                    height="50px"
+                    backgroundColor={{
+                      "not_sent": 'gray',
+                      "init": 'blue',
+                      "sent": 'green',
                     }[txState]}
-                  </Text>
-                </Button>
+                    marginLeft={32}
+                    color={'white'}
+                    onClick={
+                      async () => {
+                        if (txState === 'not_sent') {
+                          setTxState("init")
+                          setFaucetState('not_sent')
+                          await sendTx()
+                          setTxState("sent")
+                        }
+                      }}
+                  >
+                    <Text
+                      fontSize="14px"
+                    >
+                      {{
+                        "not_sent": `Mint NFT!`,
+                        "init": "Pending...",
+                        "sent": "Bought!",
+                      }[txState]}
+                    </Text>
+                  </Button>
+                </Tooltip>
               </li>
             </ol>
           </div>
