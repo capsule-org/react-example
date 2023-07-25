@@ -104,6 +104,12 @@
   color: #FFFFFF;
 }
 
+.nft-center-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 @media screen and (max-width: 550px) {
   .section__padding {
     padding: 2rem 14px !important;

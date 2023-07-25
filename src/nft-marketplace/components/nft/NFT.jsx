@@ -156,7 +156,7 @@ const NFT = ({ capsule }) => {
   }
 
   return (
-    <div className='bids section__padding'>
+    <div className='bids section__padding nft-center-button'>
       <div className="bids-container">
         <div className="bids-container-text" style={{ textAlign: 'center' }}>
           <ol>
@@ -177,8 +177,8 @@ const NFT = ({ capsule }) => {
                     width="150px"
                     height="50px"
                     backgroundColor={{
-                      "not_sent": 'orange',
-                      "init": 'red',
+                      "not_sent": 'gray',
+                      "init": 'blue',
                       "sent": 'green',
                     }[faucetState]}
                     color={'white'}
@@ -217,8 +217,8 @@ const NFT = ({ capsule }) => {
                     width="150px"
                     height="50px"
                     backgroundColor={{
-                      "not_sent": 'orange',
-                      "init": 'red',
+                      "not_sent": 'gray',
+                      "init": 'blue',
                       "sent": 'green',
                     }[txState]}
                     color={'white'}
