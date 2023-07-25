@@ -8,8 +8,6 @@ import { FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
 import bids4 from '../../assets/wordmark_white.png'
 import { Button, Text } from '@chakra-ui/react'
 
-const FAUCET_TIME_LIMIT_IN_SECONDS = 24 * 60 * 60;
-
 const DEFAULT_CONTRACT_ADDRESS = '0xc08c00e1aa97a18583dc1a72a7e9fb9ce56cfef5'
 const DEFAULT_CHAIN_ID = '11155111';
 const DEFAULT_CONTRACT_ABI = [
@@ -147,7 +145,12 @@ const NFT = ({ capsule }) => {
   }
 
   if (!loggedIn) {
-    return <div className='nft-placeholder' />;
+    return <Text as="i" fontSize={14} margin="20" color="white">
+      This is a test application to illustrate Capsule's SDK and
+      is intended to be used only for testing purposes. Assets used herein are on
+      the Sepolia testnet and valueless. Additionally, this demo app is connected
+      to a beta environment and test accounts created may be occasionally deleted.
+    </Text>;
   }
 
   return (
@@ -155,7 +158,7 @@ const NFT = ({ capsule }) => {
       <div className="bids-container">
         <div className="bids-container-text" style={{ textAlign: 'center' }}>
           <ol>
-            <li>Faucet your wallet</li>
+            <li>Fund your wallet</li>
             <li>Mint the NFT</li>
           </ol>
         </div>

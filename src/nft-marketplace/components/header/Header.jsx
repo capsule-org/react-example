@@ -5,12 +5,13 @@ import "slick-carousel/slick/slick-theme.css";
 import capsule_logo from '../../assets/capsule-logo.svg'
 const Header = (props) => {
   return (
-    <div className='header section__padding'>
+    <div className='header'>
       <div className="header-content">
-        <div>
-          <h1>Check out this Demo App of an NFT Mint to see how Capsule's SDKs improve user experiences in crypto</h1>
-          <img className='shake-vertical' src={capsule_logo} alt="" />
+        <div className="text-container">
+          <h1>Capsule Demo App</h1>
+          <p>This app is a sample NFT Marketplace using the Capsule SDK</p>
         </div>
+        <img className='shake-vertical img-styling' src={capsule_logo} alt="" />
       </div>
     </div>
   )
