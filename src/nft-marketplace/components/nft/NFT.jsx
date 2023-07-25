@@ -145,12 +145,14 @@ const NFT = ({ capsule }) => {
   }
 
   if (!loggedIn) {
-    return <Text as="i" fontSize={14} margin="20" color="white">
-      This is a test application to illustrate Capsule's SDK and
-      is intended to be used only for testing purposes. Assets used herein are on
-      the Sepolia testnet and valueless. Additionally, this demo app is connected
-      to a beta environment and test accounts created may be occasionally deleted.
-    </Text>;
+    return <div className="nft-text-container">
+      <p>
+        This is a test application to illustrate Capsule's SDK and
+        is intended to be used only for testing purposes. Assets used herein are on
+        the Sepolia testnet and valueless. Additionally, this demo app is connected
+        to a beta environment and test accounts created may be occasionally deleted.
+      </p>
+    </div>
   }
 
   return (

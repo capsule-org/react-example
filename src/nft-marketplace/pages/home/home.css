@@ -2,12 +2,19 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
 }
+
 .larger-btn {
-    padding: 15px 30px; 
-    font-size: 20px;   
+    padding: 15px 30px;
+    font-size: 20px;
     width: 150px;
-    height: 50px;      
+    height: 50px;
+}
+
+.center-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

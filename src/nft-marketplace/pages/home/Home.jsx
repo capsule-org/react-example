@@ -14,7 +14,9 @@ const Home = () => {
 
   return <div className='center-content'>
     <Header />
-    <CapsuleButton capsule={capsule} appName={"Capsule Marketplace"} />
+    <div className='center-button'>
+      <CapsuleButton capsule={capsule} appName={"Capsule Marketplace"} />
+    </div>
     <NFT capsule={capsule} />
   </div>;
 };
