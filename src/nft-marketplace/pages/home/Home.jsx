@@ -5,12 +5,10 @@ import { CapsuleButton } from '@usecapsule/web-sdk/dist/modal/CapsuleModal';
 import './home.css'
 
 const Home = () => {
-  const environment = Environment.DEV;
-  // const environment = Environment.BETA;
+  const environment = Environment.BETA;
 
   const capsule = new Capsule(environment, undefined, {
-    offloadMPCComputationURL: 'http://localhost:9009'
-    // offloadMPCComputationURL: 'https://partner-mpc-computation.beta.usecapsule.com',
+    offloadMPCComputationURL: 'https://partner-mpc-computation.beta.usecapsule.com',
   });
 
   return <div className='center-content'>
