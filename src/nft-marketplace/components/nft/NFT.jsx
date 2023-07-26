@@ -7,6 +7,7 @@ import Web3 from 'web3'
 import { FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
 import bids4 from '../../assets/wordmark_white.png'
 import { Button, Text, Tooltip } from '@chakra-ui/react'
+import { getBaseUrl } from '@usecapsule/web-sdk/dist/external/capsuleClient'
 
 const DEFAULT_CONTRACT_ADDRESS = '0xc08c00e1aa97a18583dc1a72a7e9fb9ce56cfef5'
 const DEFAULT_CHAIN_ID = '11155111';
@@ -38,11 +39,8 @@ const DEFAULT_CONTRACT_ABI = [
     "type": "function"
   }
 ];
-const FAUCET_WALLET_ADDRESS = '0x328690d91D405c14D8E4cD1306E2Ca192A17D32e';
-const FAUCET_WALLET_PRIVATE_KEY = '3482cff611e76ea3ad84276e644454ad4c74ad5848eb5d51c9fb60271ccdb469'
 
-
-const NFT = ({ capsule }) => {
+const NFT = ({ environment, capsule }) => {
 
   const [txState, setTxState] = useState("not_sent");
   const [faucetState, setFaucetState] = useState('not_sent');
@@ -58,7 +56,7 @@ const NFT = ({ capsule }) => {
 
       const currentWalletAddress = Object.values(capsule.getWallets())?.[0]?.address;
       if (currentWalletAddress && currentWalletAddress !== prevWalletAddress.current) {
-        const faucetUsed = await hasWalletUsedFaucet();
+        const faucetUsed = await hasWalletUsedCapsuleFaucet();
         setHasUsedFaucet(faucetUsed);
         prevWalletAddress.current = currentWalletAddress;
       }
@@ -73,26 +71,15 @@ const NFT = ({ capsule }) => {
     return () => clearInterval(intervalId);
   }, []);
 
-  async function hasWalletUsedFaucet() {
-    const etherscanAPIKey = 'TE5TTNWIEHHT9C6N4CQU1GZASIN864UN8U';
-    const walletAddress = Object.values(capsule.getWallets())?.[0]?.address;
-    const apiLink = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc&apikey=${etherscanAPIKey}`;
-
+  async function hasWalletUsedCapsuleFaucet() {
     try {
-      const response = await fetch(apiLink);
+      const walletId = capsule.getWallets()?.[Object.keys(capsule.getWallets())[0]]?.id;
+      const url = `${getBaseUrl(environment)}demo/wallets/${walletId}/has-used-faucet`
+      const response = await fetch(url);
       const data = await response.json();
-
-      for (const transaction of data.result) {
-        if (transaction.from.toLowerCase() === FAUCET_WALLET_ADDRESS.toLowerCase()) {
-          console.log("Faucet Used")
-          return true;
-        }
-      }
-
-      console.log("Faucet not used");
-      return false;
+      const { hasWalletUsedFaucet } = data;
+      return hasWalletUsedFaucet;
     } catch (error) {
-      console.error('Failed to fetch transactions: ', error);
       return false;
     }
   }
@@ -135,9 +122,6 @@ const NFT = ({ capsule }) => {
   }
 
   async function sendTx() {
-    if (!loggedIn) {
-      await capsule.refreshSession(true)
-    }
 
     const walletId = capsule.getWallets()?.[Object.keys(capsule.getWallets())[0]]?.id;
 
@@ -155,29 +139,27 @@ const NFT = ({ capsule }) => {
       ['808'],
       '',
     );
-    const res = await capsule.sendTransaction(walletId, tx, `${DEFAULT_CHAIN_ID}`);
-    console.log(res);
+    await capsule.sendTransaction(walletId, tx, `${DEFAULT_CHAIN_ID}`);
   }
 
-  async function faucet(toAddress) {
-
-    const txObject = {
-      nonce: web3.utils.toHex(await web3.eth.getTransactionCount(FAUCET_WALLET_ADDRESS)),
-      to: toAddress,
-      value: web3.utils.toHex(web3.utils.toWei('0.0005', 'ether')),
-      gasLimit: web3.utils.toHex(21000),
-      gasPrice: web3.utils.toHex(web3.utils.toWei('0.00004', 'gwei'))
-    };
-
-    const signedTx = await web3.eth.accounts.signTransaction(txObject, FAUCET_WALLET_PRIVATE_KEY);
-
-    const result = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
-    console.log(result)
-
-    setFaucetState("sent");
-    setTimeout(() => {
-      setHasUsedFaucet(true);
-    }, 3000);
+  async function faucet() {
+    try {
+      const walletId = capsule.getWallets()?.[Object.keys(capsule.getWallets())[0]]?.id;
+      const url = `${getBaseUrl(environment)}demo/wallets/${walletId}/use-faucet`
+      const response = await fetch(url, {
+        method: 'POST'
+      });
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      setFaucetState("sent");
+      setTimeout(() => {
+        setHasUsedFaucet(true);
+      }, 3000);
+    } catch (error) {
+      console.error('Failed to fetch transactions: ', error);
+      setFaucetState("not_sent");
+    }
   }
 
   return (
@@ -207,7 +189,7 @@ const NFT = ({ capsule }) => {
                           setFaucetState('init')
                           setTxState('not_sent')
                           try {
-                            await faucet(Object.values(capsule.getWallets())[0].address)
+                            await faucet()
                           } catch {
                             setFaucetState('not_sent')
                           }
