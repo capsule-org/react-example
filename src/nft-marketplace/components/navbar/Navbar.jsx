@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="navbar-links_logo">
           <img src={logo} alt="logo" />
           <Link to="/">
-            <h1>Capsule Marketplace</h1>
+            <h1>Capsule Mint Site</h1>
           </Link>
         </div>
         <div className="navbar-links_container">
