@@ -9,7 +9,7 @@ const Header = (props) => {
       <div className="header-content">
         <div className="text-container">
           <h1>Capsule Demo App</h1>
-          <p>This app is a sample NFT Marketplace using the Capsule SDK</p>
+          <p>This app is a sample NFT Mint Site using the Capsule SDK</p>
         </div>
         <img className='shake-vertical img-styling' src={capsule_logo} alt="" />
       </div>
