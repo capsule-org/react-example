@@ -2,5 +2,5 @@
 
 A collection of open source samples that illustrate best practices for Capsule.
 
-* [Express](./express)
 * [Marketplace](./marketplace)
+* [Express](./express)
