@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 const Menu = () => (
   <>
     <Link target="_blank" rel="noreferrer" to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'><p>Join Beta</p></Link>
-    <Link target="_blank" rel="noreferrer" to='https://usecapsule.com'><p>Website</p></Link>
-    <Link target="_blank" rel="noreferrer" to='https://docs-preview.usecapsule.com/'><p>View Docs</p></Link>
-    <Link target="_blank" rel="noreferrer" to='https://github.com/capsule-org/capsule-example'><p>View Demo App Github</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://usecapsule.com'><p>Capsule Home</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://docs.usecapsule.com/'><p>Documentation</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://github.com/capsule-org/capsule-examples'><p>Examples Repo</p></Link>
   </>
 )
 
