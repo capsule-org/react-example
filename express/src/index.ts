@@ -36,11 +36,9 @@ import Capsule, { Environment, DeniedSignatureResWithUrl } from '@usecapsule/web
 //  CapsuleConnector,
 //  CapsuleWeb,
 //} from './library';
-import {
-  CapsuleServer
-} from './library';
-import { CoreCapsule } from './library/CoreCapsule';
-import { ConstructorOpts } from './library/Capsule';
+import { CapsuleServer } from '@usecapsule/web-sdk';
+import { CoreCapsule } from '@usecapsule/web-sdk'; 
+import { ConstructorOpts } from '@usecapsule/web-sdk';
 
 // sample transaction params
 const DEFAULT_TO_ADDRESS = '0x42c9a72c9dfcc92cae0de9510160cea2da27af91';
