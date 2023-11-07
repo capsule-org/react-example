@@ -6,10 +6,9 @@ import { Link } from "react-router-dom";
 
 const Menu = () => (
   <>
-    <Link target="_blank" rel="noreferrer" to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'><p>Join Beta</p></Link>
-    <Link target="_blank" rel="noreferrer" to='https://usecapsule.com'><p>Website</p></Link>
-    <Link target="_blank" rel="noreferrer" to='https://docs.usecapsule.com/'><p>View Docs</p></Link>
-    <Link target="_blank" rel="noreferrer" to='https://github.com/capsule-org/capsule-example'><p>View Demo App Github</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://github.com/capsule-org/capsule-example'><p>Demo</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://docs.usecapsule.com/'><p>Docs</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'><p class='cta'>Get Access</p></Link>
   </>
 )
 
@@ -22,8 +21,9 @@ const Navbar = () => {
       <div className="navbar-links">
         <div className="navbar-links_logo">
           <img src={logo} alt="logo" />
-          <Link to="/">
-            <h1>Capsule Mint Site</h1>
+          &nbsp;
+          <Link to="https://usecapsule.com">
+            <h1>Capsule</h1>
           </Link>
         </div>
         <div className="navbar-links_container">

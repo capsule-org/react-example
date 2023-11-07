@@ -13,10 +13,12 @@ const Home = () => {
 
   return <div className='center-content'>
     <Header />
-    <div className='center-button'>
-      <CapsuleButton capsule={capsule} appName={"Capsule Marketplace"} />
+    <div className='main-attraction'>
+      <div className='center-button'>
+        <CapsuleButton capsule={capsule} appName={"Capsule Marketplace"} />
+      </div>
+      <NFT environment={environment} capsule={capsule} />
     </div>
-    <NFT environment={environment} capsule={capsule} />
   </div>;
 };
 
