@@ -266,7 +266,7 @@ const NFT = ({ environment, capsule }) => {
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 20, paddingBottom: 20 }}>
                   <p style={{ fontSize: '2em' }}>Capsule NFT</p>
                 </div>
-                <img src={bids4} alt="" />
+                <img src={bids4} alt="NFT"/>
               </div>
             </div>
           </div>
