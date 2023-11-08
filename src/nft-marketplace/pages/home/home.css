@@ -26,6 +26,7 @@ html, body {
     justify-content: center;
     width: 100%;
     margin-top: 1em;
+    min-width: 400px;
 }
 
 .navbar-links a p {
