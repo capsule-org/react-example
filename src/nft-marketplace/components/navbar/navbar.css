@@ -23,8 +23,7 @@
 .navbar-links_logo h1{
   font-family: var(--font-family);
   font-weight: bold;
-  font-size: 18px;
-  line-height: 17px;
+  line-height: 15px;
 }
 .navbar-links_logo img{
   margin-right: 5px;
@@ -55,8 +54,8 @@
   color: #fff;
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 12px;
+  line-height: 15px;
   text-transform: capitalize;
   margin: 0 1rem;
   cursor: pointer;
@@ -118,10 +117,14 @@
 .navbar-menu_container-links-sign{
   display: none;
 }
-.cta {
+.navbar-links p {
   border: double 4px transparent;
-  border-radius: 80px;
-  background-image: linear-gradient(black, black), radial-gradient(circle at top left, #f00,#3020ff);
+}
+.cta {
+  margin: 4rem 0;
+  border: double 4px transparent;
+  border-radius: 10px;
+  background-image: linear-gradient(black, black), radial-gradient(circle at top left, #ff3d00,#ff0000,#ae00da,#5c0088);
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
@@ -152,7 +155,7 @@
     display: none;
   }
   .navbar-menu_container{
-    top: 20px;
+    top: 10px;
   }
   .navbar-menu_container-links-sign{
     display: block;
