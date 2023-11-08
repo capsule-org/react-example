@@ -25,8 +25,28 @@ html, body {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-top: 1em;
 }
 
 .navbar-links a p {
   padding: 10px 20px;
 }
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 8rem;
+    margin: 0;
+    padding-top: 4rem;
+    max-width: 95%;
+  }
+
+  .footer p {
+    font-family: var(--font-family);
+    font-size: 11px;
+    line-height: 150%;
+    color: #FFFFFF;
+    max-width: 95%;
+  }

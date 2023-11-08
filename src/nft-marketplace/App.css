@@ -8,7 +8,7 @@ a{
 }
 
 .gradient__bg{
- 
+
  /* ff 3.6+ */
  background:-moz-radial-gradient(circle at 0% 29%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 100%);
 
@@ -33,10 +33,10 @@ a{
   -webkit-text-fill-color: transparent;
 }
 .section__padding{
-  padding: 4rem 6rem;
+  padding: 1rem 1rem;
 }
 .section__margin{
-  margin: 4rem 6rem;
+  margin: 1rem 1rem;
 }
 .scale-up-center {
 	-webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;

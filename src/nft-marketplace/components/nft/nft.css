@@ -74,8 +74,7 @@
   font-size: 28px;
   font-weight: bold;
   text-decoration: underline;
-  font-family: Arial;
-  padding-bottom: 4rem;
+  padding-bottom: 1rem;
 }
 
 .bids-card-bottom {
@@ -122,8 +121,8 @@
   justify-content: space-between;
   align-items: center;
   padding-left: 8rem;
-  margin: 0;
-  padding-top: 4rem;
+  margin: 1em;
+  padding: 1rem;
   max-width: 95%;
 }
 
@@ -134,7 +133,6 @@
   color: #FFFFFF;
   max-width: 95%;
 }
-
 
 .nft-center-button {
   display: flex;
