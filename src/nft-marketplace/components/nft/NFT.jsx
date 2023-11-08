@@ -5,11 +5,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import './nft.css'
 import Web3 from 'web3'
 import { FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
+import bids4 from '../../assets/nft.png'
 import { Button, Text, Tooltip } from '@chakra-ui/react'
 import { getBaseUrl } from '@usecapsule/web-sdk/dist/external/capsuleClient'
 import { CapsuleButton } from '@usecapsule/web-sdk/dist/modal/CapsuleModal';
 import { Header, } from '../../components'
-import bids4 from '../../assets/nft.png'
 
 const DEFAULT_CONTRACT_ADDRESS = '0xc08c00e1aa97a18583dc1a72a7e9fb9ce56cfef5'
 const DEFAULT_CHAIN_ID = '11155111';
