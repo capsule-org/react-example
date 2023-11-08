@@ -20,7 +20,7 @@ const Home = () => {
       <NFT environment={environment} capsule={capsule} />
     </div>
   </div>
-        <div className="nft-text-container">
+        <div className="footer">
         <p>
           This is a test application to illustrate Capsule's SDK and
           is intended to be used only for testing purposes. Assets used herein are on

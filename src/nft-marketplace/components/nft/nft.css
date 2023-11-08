@@ -29,6 +29,10 @@
   align-items: center;
 }
 
+.bids-container-text button {
+  border-radius: 4px;
+}
+
 .list-text::after {
   content: " ->";
   margin-left: 10px;
@@ -113,25 +117,6 @@
 .nft-placeholder {
   height: 200px;
   padding: 2rem 14px;
-}
-
-.nft-text-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 8rem;
-  margin: 1em;
-  padding: 1rem;
-  max-width: 95%;
-}
-
-.nft-text-container p {
-  font-family: var(--font-family);
-  font-size: 11px;
-  line-height: 150%;
-  color: #FFFFFF;
-  max-width: 95%;
 }
 
 .nft-center-button {
