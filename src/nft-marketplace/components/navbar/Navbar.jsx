@@ -6,26 +6,23 @@ import { Link } from "react-router-dom";
 
 const Menu = () => (
   <>
-    <Link target="_blank" rel="noreferrer" to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'><p>Join Beta</p></Link>
-    <Link target="_blank" rel="noreferrer" to='https://usecapsule.com'><p>Website</p></Link>
-    <Link target="_blank" rel="noreferrer" to='https://docs.usecapsule.com/'><p>View Docs</p></Link>
-    <Link target="_blank" rel="noreferrer" to='https://github.com/capsule-org/capsule-example'><p>View Demo App Github</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://docs.usecapsule.com/'><p>Docs</p></Link>
+    <Link target="_blank" rel="noreferrer" to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'><p class='cta'>Get Access</p></Link>
   </>
 )
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false)
 
-
   return (
     <div className='navbar'>
       <div className="navbar-links">
         <div className="navbar-links_logo">
-          <img src={logo} alt="logo" />
-          <Link to="/">
-            <h1>Capsule Mint Site</h1>
+          <Link to="https://usecapsule.com">
+            <img src={logo} alt="Capsule" width="100em" />
           </Link>
         </div>
+        <div class="navbar-links_spacer"></div>
         <div className="navbar-links_container">
           <Menu />
         </div>

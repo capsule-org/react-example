@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import './nft.css'
 import Web3 from 'web3'
 import { FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
-import bids4 from '../../assets/wordmark_white.png'
+import bids4 from '../../assets/nft.png'
 import { Button, Text, Tooltip } from '@chakra-ui/react'
 import { getBaseUrl } from '@usecapsule/web-sdk/dist/external/capsuleClient'
 
@@ -266,20 +266,12 @@ const NFT = ({ environment, capsule }) => {
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 20, paddingBottom: 20 }}>
                   <p style={{ fontSize: '2em' }}>Capsule NFT</p>
                 </div>
-                <img src={bids4} alt="" />
+                <img src={bids4} alt="NFT"/>
               </div>
             </div>
           </div>
         </div>
       </div>}
-      <div className="nft-text-container">
-        <p>
-          This is a test application to illustrate Capsule's SDK and
-          is intended to be used only for testing purposes. Assets used herein are on
-          the Sepolia testnet and valueless. Additionally, this demo app is connected
-          to a beta environment and test accounts created may be occasionally deleted.
-        </p>
-      </div>
     </>
   )
 }
