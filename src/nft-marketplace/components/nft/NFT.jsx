@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import './nft.css'
 import Web3 from 'web3'
 import { FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
-import bids4 from '../../assets/wordmark_white.png'
+import bids4 from '../../assets/nft.png'
 import { Button, Text, Tooltip } from '@chakra-ui/react'
 import { getBaseUrl } from '@usecapsule/web-sdk/dist/external/capsuleClient'
 
