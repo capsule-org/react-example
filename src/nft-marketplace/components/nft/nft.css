@@ -34,7 +34,8 @@
 }
 
 .list-text::after {
-  content: " ->";
+  line-break: strict;
+  content: " →";
   margin-left: 10px;
 }
 
