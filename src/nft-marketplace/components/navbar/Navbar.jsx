@@ -23,6 +23,7 @@ const Navbar = () => {
             <img src={logo} alt="Capsule" width="100em" />
           </Link>
         </div>
+        <div class="navbar-links_spacer"></div>
         <div className="navbar-links_container">
           <Menu />
         </div>

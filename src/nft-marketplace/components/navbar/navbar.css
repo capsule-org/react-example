@@ -1,10 +1,15 @@
 .navbar{
   display: flex;
+  align-items: flex-end;
+  border-bottom: 2px solid rgba(255,255,255,0.5);
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 6rem;
-  border-bottom: 1px solid rgba(165, 165, 165, 0.1);
+  padding: 0.5rem 1rem 0.5rem 2rem;
   background-color: black;
+  border-bottom: double 2px transparent;
+  background-image: linear-gradient(black, black), radial-gradient(circle at bottom right, #4e0155,#ae00bd,#fe441a,#ff8a01,#ffe926,#ffffff,#ffe926,#ff8a01,#fe441a,#ae00bd,#4e0155,#4e0155);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 }
 
 .navbar-links{
@@ -32,6 +37,9 @@
   display: flex;
   flex-direction: row;
   position: relative;
+}
+.navbar-links_spacer {
+  flex: 1;
 }
 .navbar-links_container input {
   background: #1B1A21;
@@ -118,11 +126,11 @@
   display: none;
 }
 .navbar-links p {
-  border: double 4px transparent;
+  border: double 2px transparent;
 }
+
 .cta {
-  margin: 4rem 0;
-  border: double 4px transparent;
+  border: double 2px transparent;
   border-radius: 10px;
   background-image: linear-gradient(black, black), radial-gradient(circle at top left, #ff3d00,#ff0000,#ae00da,#5c0088);
   background-origin: border-box;

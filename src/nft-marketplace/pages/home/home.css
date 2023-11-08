@@ -1,12 +1,10 @@
-#root {
+html, body {
     background: black;
-    background: no-repeat url('../../../../public/comet-burst.svg');
-    background-size: cover;
 }
 
-.center-content {
-    background: linear-gradient(270deg, rgba(2,0,36,0) 0%, rgba(2,0,36,0.1) 30%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.9) 100%);
-    background-size: contain;
+#root {
+    background: no-repeat url('../../../../public/comet-burst.svg');
+    background-size: cover;
 }
 
 .center-content {

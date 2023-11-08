@@ -12,13 +12,24 @@ const Home = () => {
   });
 
   return <div className='center-content'>
-    <Header />
-    <div className='main-attraction'>
+    <table>
+      <tr>
+      <td>
+      <Header />
+      </td>
+      <td>
+      <div className='main-attraction'>
       <div className='center-button'>
         <CapsuleButton capsule={capsule} appName={"Capsule Marketplace"} />
       </div>
       <NFT environment={environment} capsule={capsule} />
     </div>
+      </td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+    </table>
   </div>
 };
 
