@@ -19,7 +19,7 @@ const Home = () => {
       </div>
       <NFT environment={environment} capsule={capsule} />
     </div>
-  </div>;
+  </div>
 };
 
 export default Home

@@ -15,15 +15,12 @@ const Menu = () => (
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false)
 
-
   return (
     <div className='navbar'>
       <div className="navbar-links">
         <div className="navbar-links_logo">
-          <img src={logo} alt="logo" />
-          &nbsp;
           <Link to="https://usecapsule.com">
-            <h1>Capsule</h1>
+            <img src={logo} alt="Capsule" width="100em" />
           </Link>
         </div>
         <div className="navbar-links_container">
