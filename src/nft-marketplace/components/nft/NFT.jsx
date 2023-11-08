@@ -166,6 +166,7 @@ const NFT = ({ environment, capsule }) => {
 
   return (
     <>
+    <div class="sidebar">
       <Header />
       <div className='center-button'>
         <CapsuleButton capsule={capsule} appName={"Capsule Marketplace"} />
@@ -266,7 +267,8 @@ const NFT = ({ environment, capsule }) => {
           </div>
         </div>
       </div>}
-      <div className="bids-container-card">
+      </div>
+      {loggedIn && <div className="bids-container-card">
         <div className="card-column">
           <div className="bids-card">
             <div className="bids-card-top">
@@ -277,7 +279,7 @@ const NFT = ({ environment, capsule }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div>}
     </>
   )
 }
