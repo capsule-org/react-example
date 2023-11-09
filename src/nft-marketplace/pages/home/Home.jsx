@@ -4,11 +4,9 @@ import Capsule, { Environment } from "@usecapsule/web-sdk";
 import './home.css'
 
 const Home = () => {
-  const environment = Environment.BETA;
+  const environment = Environment.DEVELOPMENT;
 
-  const capsule = new Capsule(environment, undefined, {
-    offloadMPCComputationURL: 'https://partner-mpc-computation.beta.usecapsule.com',
-  });
+  const capsule = new Capsule(environment, undefined);
 
   return <>
     <div className='center-content'>
