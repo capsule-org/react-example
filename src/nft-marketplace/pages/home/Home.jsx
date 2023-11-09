@@ -9,7 +9,7 @@ const TEST_API_KEY = "d0b61c2c8865aaa2fb12886651627271";
 const Home = () => {
   const environment = Environment.DEVELOPMENT;
 
-  const capsule = new Capsule(environment, undefined);
+  const capsule = new Capsule(environment, TEST_API_KEY);
 
   return <>
     <div className='center-content'>
