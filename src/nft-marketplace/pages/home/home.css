@@ -1,6 +1,7 @@
 #root {
-    background: url('../../../../public/comet-burst.svg');
+    background: no-repeat black url('../../../../public/comet-burst.svg');
     background-size: cover;
+    width: 100%;
 }
 
 .center-content {
@@ -36,6 +37,12 @@
     align-items: center;
     margin: 1em;
     padding: 1rem;
+}
+
+@media screen and (max-width: 1350px) {
+  .main-attraction {
+    flex-direction: column;
+  }
 }
 
 .sidebar {
