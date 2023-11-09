@@ -3,7 +3,7 @@ html, body {
 }
 
 #root {
-    background: no-repeat url('../../../../public/comet-burst.svg');
+    background: black url('../../../../public/comet-burst.svg');
     background-size: cover;
 }
 
@@ -24,29 +24,29 @@ html, body {
 .center-button {
     display: flex;
     justify-content: center;
-    width: 100%;
     margin-top: 1em;
-    min-width: 400px;
 }
 
 .navbar-links a p {
   padding: 10px 20px;
 }
 
-.footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1em;
-  padding: 1rem;
-  max-width: 95%;
+.main-attraction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    padding: 1rem;
 }
 
-.footer p {
-  font-family: var(--font-family);
-  font-size: 11px;
-  line-height: 150%;
-  color: #FFFFFF;
-  max-width: 95%;
+@media screen and (min-width: 1200px) {
+  .main-attraction {
+    flex-direction: row;
+  }
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
 }

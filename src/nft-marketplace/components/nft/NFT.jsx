@@ -8,6 +8,8 @@ import { FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
 import bids4 from '../../assets/nft.png'
 import { Button, Text, Tooltip } from '@chakra-ui/react'
 import { getBaseUrl } from '@usecapsule/web-sdk/dist/external/capsuleClient'
+import { CapsuleButton } from '@usecapsule/web-sdk/dist/modal/CapsuleModal';
+import { Header, } from '../../components'
 
 const DEFAULT_CONTRACT_ADDRESS = '0xc08c00e1aa97a18583dc1a72a7e9fb9ce56cfef5'
 const DEFAULT_CHAIN_ID = '11155111';
@@ -164,6 +166,11 @@ const NFT = ({ environment, capsule }) => {
 
   return (
     <>
+    <div class="sidebar">
+      <Header />
+      <div className='center-button'>
+        <CapsuleButton capsule={capsule} appName={"Capsule Marketplace"} />
+      </div>
       {loggedIn && <div className='bids section__padding nft-center-button'>
         <div className="bids-container">
           <div className='instruction-style'>Instructions</div>
@@ -177,7 +184,7 @@ const NFT = ({ environment, capsule }) => {
                     height="50px"
                     marginLeft={32}
                     backgroundColor={hasUsedFaucet ? "orange" : {
-                      "not_sent": 'gray',
+                      "not_sent": 'black',
                       "init": 'blue',
                       "sent": 'green',
                     }[faucetState]}
@@ -215,7 +222,7 @@ const NFT = ({ environment, capsule }) => {
                     width="150px"
                     height="50px"
                     backgroundColor={{
-                      "not_sent": 'gray',
+                      "not_sent": 'black',
                       "init": 'blue',
                       "sent": 'green',
                     }[txState]}
@@ -259,15 +266,16 @@ const NFT = ({ environment, capsule }) => {
             )}
           </div>
         </div>
-        <div className="bids-container-card">
-          <div className="card-column">
-            <div className="bids-card">
-              <div className="bids-card-top">
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 20, paddingBottom: 20 }}>
-                  <p style={{ fontSize: '2em' }}>Capsule NFT</p>
-                </div>
-                <img src={bids4} alt="NFT"/>
+      </div>}
+      </div>
+      {loggedIn && <div className="bids-container-card">
+        <div className="card-column">
+          <div className="bids-card">
+            <div className="bids-card-top">
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 20 }}>
+                <p style={{ fontSize: '2em' }}>Capsule NFT</p>
               </div>
+              <img src={bids4} alt="NFT"/>
             </div>
           </div>
         </div>
