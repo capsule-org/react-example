@@ -35,7 +35,6 @@
 .navbar-links_container{
   display: flex;
   flex-direction: row;
-  position: relative;
 }
 .navbar-links_spacer {
   flex: 1;
@@ -112,8 +111,6 @@
   top: 40px;
   right: 0;
   margin-top: 1rem;
-  width: 100%;
-  min-width: 210px;
   border-radius: 5px;
   box-shadow: 0 0 5 rgba(0,0,0,0.2);
   z-index: 99;
