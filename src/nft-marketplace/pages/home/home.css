@@ -5,6 +5,7 @@ html, body {
 #root {
     background: black url('../../../../public/comet-burst.svg');
     background-size: cover;
+    margin-bottom: 5em;
 }
 
 .center-content {
