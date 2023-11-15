@@ -813,6 +813,7 @@ a.nav-link .social-icon {
   width: 100%;
   max-width: 100vw;
   overflow: hidden;
+  height: 80px;
 }
 .site-footer:before {
   content: "";
