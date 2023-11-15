@@ -169,7 +169,7 @@ const NFT = ({ environment, capsule }) => {
     <div class="sidebar">
       <Header />
       <div className='center-button'>
-        <CapsuleButton capsule={capsule} appName={"Capsule Marketplace"} />
+        <CapsuleButton capsule={capsule} appName={"Capsule Demo App"} />
       </div>
       {loggedIn && <div className='bids section__padding nft-center-button'>
         <div className="bids-container">
