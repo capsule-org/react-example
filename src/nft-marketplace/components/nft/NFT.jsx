@@ -183,7 +183,7 @@ const NFT = ({ environment, capsule }) => {
                     width="150px"
                     height="50px"
                     marginLeft={32}
-                    backgroundColor={hasUsedFaucet ? "orange" : {
+                    backgroundColor={hasUsedFaucet ? "green" : {
                       "not_sent": 'black',
                       "init": 'blue',
                       "sent": 'green',
