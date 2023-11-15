@@ -166,10 +166,10 @@ const NFT = ({ environment, capsule }) => {
 
   return (
     <>
-    <div class="sidebar">
+    <div className="sidebar">
       <Header />
       <div className='center-button'>
-        <CapsuleButton capsule={capsule} appName={"Capsule Marketplace"} />
+        <CapsuleButton capsule={capsule} appName={"Capsule Demo App"} onClick={() => setHasUsedFaucet(false)} />
       </div>
       {loggedIn && <div className='bids section__padding nft-center-button'>
         <div className="bids-container">
@@ -177,13 +177,13 @@ const NFT = ({ environment, capsule }) => {
           <div className="bids-container-text" style={{ textAlign: 'center' }}>
             <ol>
               <li>
-                <span className='list-text'><span class="number">1.</span> Fund your wallet</span>
+                <span className='list-text'><span className="number">1.</span> Fund your wallet</span>
                 <Tooltip placement='right' color="white" label="We only allow one faucet call per wallet." isDisabled={!hasUsedFaucet}>
                   <Button
                     width="150px"
                     height="50px"
                     marginLeft={32}
-                    backgroundColor={hasUsedFaucet ? "orange" : {
+                    backgroundColor={hasUsedFaucet ? "green" : {
                       "not_sent": 'black',
                       "init": 'blue',
                       "sent": 'green',
@@ -216,7 +216,7 @@ const NFT = ({ environment, capsule }) => {
                 </Tooltip>
               </li>
               <li>
-                <span className='list-text'><span class="number">2.</span> Mint the NFT</span>
+                <span className='list-text'><span className="number">2.</span> Mint the NFT</span>
                 <Tooltip placement='right' color="white" label="Congratulations! Refresh the page to mint again." isDisabled={txState !== 'sent'}>
                   <Button
                     width="150px"
@@ -244,7 +244,7 @@ const NFT = ({ environment, capsule }) => {
                       {{
                         "not_sent": `Mint NFT!`,
                         "init": "Pending...",
-                        "sent": "Bought!",
+                        "sent": "Minted!",
                       }[txState]}
                     </Text>
                   </Button>

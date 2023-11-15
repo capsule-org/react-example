@@ -2,11 +2,6 @@ html, body {
     background: black;
 }
 
-#root {
-    background: black url('../../../../public/comet-burst.svg');
-    background-size: cover;
-}
-
 .center-content {
     display: flex;
     flex-direction: row;
@@ -25,28 +20,4 @@ html, body {
     display: flex;
     justify-content: center;
     margin-top: 1em;
-}
-
-.navbar-links a p {
-  padding: 10px 20px;
-}
-
-.main-attraction {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 1em;
-    padding: 1rem;
-}
-
-@media screen and (min-width: 1200px) {
-  .main-attraction {
-    flex-direction: row;
-  }
-}
-
-.sidebar {
-    display: flex;
-    flex-direction: column;
 }

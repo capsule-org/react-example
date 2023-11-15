@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 
 const Menu = () => (
   <>
-    <Link target="_blank" rel="noreferrer" to='https://github.com/capsule-org/react-example'><p>GitHub</p></Link>
-    <Link target="_blank" rel="noreferrer" to='https://docs.usecapsule.com/'><p>Docs</p></Link>
-    <Link target="_blank" rel="noreferrer" to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'><p class='cta'>Get&nbsp;Access</p></Link>
+    <Link className="nav-link" target="_blank" rel="noreferrer" to='https://github.com/usecapsule/react-example'>GitHub</Link>
+    <Link className="nav-link" target="_blank" rel="noreferrer" to='https://docs.usecapsule.com/'>Docs</Link>
+    <Link className="nav-link ui-button size-small style-border" target="_blank" rel="noreferrer" to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'>Get&nbsp;Access</Link>
   </>
 )
 
@@ -16,32 +16,22 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false)
 
   return (
-    <div className='navbar'>
-      <div className="navbar-links">
-        <div className="navbar-links_logo">
-          <Link to="https://usecapsule.com">
-            <img src={logo} alt="Capsule" width="100em" />
+    <header className="site-header theme-dark">
+      <div className="site-header__content">
+
+        <a className="our-logo-container" href="/">
+          <Link className="our-logo-container" to="https://usecapsule.com">
+            <img src={logo} alt="Capsule" width="90px" height="20px" />
           </Link>
-        </div>
-        <div class="navbar-links_spacer"></div>
-        <div className="navbar-links_container">
+        </a>
+
+        <nav className="header-main__nav">
           <Menu />
-        </div>
+        </nav>
+
       </div>
-      <div className="navbar-menu">
-        {toggleMenu ?
-          <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />
-          : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />}
-        {toggleMenu && (
-          <div className="navbar-menu_container scale-up-center" >
-            <div className="navbar-menu_container-links">
-              <Menu />
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  )
+    </header>
+  );
 }
 
 export default Navbar
