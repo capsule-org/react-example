@@ -2,7 +2,6 @@ import React from 'react'
 import './header.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import capsule_logo from '../../assets/capsule-logo.svg'
 const Header = (props) => {
   return (
     <div className='header'>
