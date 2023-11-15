@@ -7,7 +7,7 @@ import Web3 from 'web3'
 import { FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
 import bids4 from '../../assets/nft.png'
 import { Button, Text, Tooltip } from '@chakra-ui/react'
-import { getBaseUrl } from '@usecapsule/web-sdk/dist/external/capsuleClient'
+import { getBaseUrl } from '@usecapsule/web-sdk/dist/core/external/capsuleClient'
 import { CapsuleButton } from '@usecapsule/web-sdk/dist/modal/CapsuleModal';
 import { Header, } from '../../components'
 

@@ -3,12 +3,13 @@ import { NFT, Header, } from '../../components'
 import Capsule, { Environment } from "@usecapsule/web-sdk";
 import './home.css'
 
-const Home = () => {
-  const environment = Environment.BETA;
+// Get an api key at usecapsule.com
+const TEST_API_KEY = "d0b61c2c8865aaa2fb12886651627271";
 
-  const capsule = new Capsule(environment, undefined, {
-    offloadMPCComputationURL: 'https://partner-mpc-computation.beta.usecapsule.com',
-  });
+const Home = () => {
+  const environment = Environment.DEVELOPMENT;
+
+  const capsule = new Capsule(environment, TEST_API_KEY);
 
   return <main className="main-page-content tuck-below-header">
     <section className="section-about-hero theme-dark">
