@@ -529,9 +529,8 @@ main:not(.tuck-below-header):has( > .theme-light:first-child ):before {
   height: 25px;
 }
 .our-logo-container {
-  display: inline-block;
-  will-change: transform, opacity;
-  transition: 0.3s;
+  display:flex;
+  justify-content: center;
 }
 .our-logo-container:hover,
 .our-logo-container:active {
