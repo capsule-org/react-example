@@ -1,5 +1,6 @@
-# Capsule Marketplace. An Example app for integration.
+# Capsule Demo App
 
+An example app for Capsule integration.
 
 ## Set-up
 
