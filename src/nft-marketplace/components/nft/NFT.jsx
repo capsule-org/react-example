@@ -244,7 +244,7 @@ const NFT = ({ environment, capsule }) => {
                       {{
                         "not_sent": `Mint NFT!`,
                         "init": "Pending...",
-                        "sent": "Bought!",
+                        "sent": "Minted!",
                       }[txState]}
                     </Text>
                   </Button>
