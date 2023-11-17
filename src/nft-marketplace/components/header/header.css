@@ -23,7 +23,6 @@
 
 .text-container h1 {
   font-family: var(--font-family);
-  width: 70%;
   font-weight: bold;
   font-size: 48px;
   line-height: 105.7%;
