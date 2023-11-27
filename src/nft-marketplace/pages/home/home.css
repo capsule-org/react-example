@@ -30,7 +30,7 @@ html, body {
 }
 
 @media screen and (min-width: 1200px) {
-.section-about-hero .section-content {
-    flex-direction: row;
-}
+    .section-about-hero .section-content {
+        flex-direction: row;
+    }
 }
