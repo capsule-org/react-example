@@ -21,3 +21,16 @@ html, body {
     justify-content: center;
     margin-top: 1em;
 }
+
+.section-about-hero .section-content {
+    max-width: 41em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (min-width: 1200px) {
+    .section-about-hero .section-content {
+        flex-direction: row;
+    }
+}

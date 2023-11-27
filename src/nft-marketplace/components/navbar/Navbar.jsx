@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Menu = () => (
   <>
-    <Link className="nav-link" target="_blank" rel="noreferrer" to='https://github.com/usecapsule/react-example'>GitHub</Link>
+    <Link className="nav-link" target="_blank" rel="noreferrer" to='https://github.com/capsule-org/react-example'>GitHub</Link>
     <Link className="nav-link" target="_blank" rel="noreferrer" to='https://docs.usecapsule.com/'>Docs</Link>
     <Link className="nav-link ui-button size-small style-border" target="_blank" rel="noreferrer" to='https://7f4shq8oyfd.typeform.com/to/F86oVLhb'>Get&nbsp;Access</Link>
   </>
