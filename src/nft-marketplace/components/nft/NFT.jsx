@@ -3,47 +3,31 @@ import { Buffer } from 'buffer'
 global.Buffer = Buffer
 import React, { useState, useEffect, useRef } from 'react'
 import './nft.css'
+import { ethers } from "ethers"
 import Web3 from 'web3'
-import { FeeMarketEIP1559Transaction } from '@ethereumjs/tx';
 import bids4 from '../../assets/nft.png'
 import { Button, Text, Tooltip } from '@chakra-ui/react'
 import { getBaseUrl } from '@usecapsule/web-sdk/dist/core/external/capsuleClient'
 import { CapsuleButton } from '@usecapsule/web-sdk/dist/modal/CapsuleModal';
+import { CapsuleEthersSigner } from "@usecapsule/web-sdk"
 import { Header, } from '../../components'
+import MINTER_CONTRACT_ABI from "./MINTER_ABI.json"
+import NFT_ABI from "./NFT_ABI.json"
 
-const DEFAULT_CONTRACT_ADDRESS = '0xc08c00e1aa97a18583dc1a72a7e9fb9ce56cfef5'
+const MINTER_CONTRACT_ADDRESS = '0x00005ea00ac477b1030ce78506496e8c2de24bf5'
 const DEFAULT_CHAIN_ID = '11155111';
-const DEFAULT_CONTRACT_ABI = [
-  {
-    "inputs": [],
-    "name": "retrieve",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "num",
-        "type": "uint256"
-      }
-    ],
-    "name": "store",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  }
-];
+const MINT_PRICE = '0.0000001'
+const MINTER_FEE_RECIPIENT = '0x0000a26b00c1F0DF003000390027140000fAa719';
+const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+const MINTER_IF_NOT_PAYER = ZERO_ADDRESS;
+const MINTER_QUANTITY = '1';
+
+const NFT_CONTRACT_ADDRESS = '0xdAfB9d117B585E406A74E84977Fa82DdEE8B0a32'
+
+const INFURA_HOST = 'https://sepolia.infura.io/v3/961364684c7346c080994baab1469ea8';
+const provider = new ethers.JsonRpcProvider(INFURA_HOST, 'sepolia')
 
 const NFT = ({ environment, capsule }) => {
-
   const [txState, setTxState] = useState("not_sent");
   const [faucetState, setFaucetState] = useState('not_sent');
   const [loggedIn, setLoggedIn] = useState(false);
@@ -55,12 +39,20 @@ const NFT = ({ environment, capsule }) => {
     const updateLoginStatus = async () => {
       const isLoggedIn = await capsule.isSessionActive();
       setLoggedIn(isLoggedIn);
+      if (!isLoggedIn) {
+        setTxState("not_sent")
+        setFaucetState("not_sent")
+      }
 
       const currentWalletAddress = Object.values(capsule.getWallets())?.[0]?.address;
       if (currentWalletAddress && currentWalletAddress !== prevWalletAddress.current) {
         const faucetUsed = await hasWalletUsedCapsuleFaucet();
         setHasUsedFaucet(faucetUsed);
         prevWalletAddress.current = currentWalletAddress;
+        const didMintNFT = await hasMintedNFT()
+        if (didMintNFT) {
+          setTxState("sent")
+        }
       }
     };
 
@@ -86,9 +78,16 @@ const NFT = ({ environment, capsule }) => {
     }
   }
 
-
   const link = `https://sepolia.etherscan.io/address/${Object.values(capsule.getWallets())?.[0]?.address}`
-  const web3 = new Web3('https://sepolia.infura.io/v3/961364684c7346c080994baab1469ea8');
+  const web3 = new Web3(INFURA_HOST);
+  const ethersSigner = new CapsuleEthersSigner(capsule, provider);
+
+  async function hasMintedNFT() {
+    const walletAddress = Object.values(capsule.getWallets())[0]?.address;
+    const contract = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_ABI, ethersSigner);
+    const res = await contract.balanceOf(walletAddress)
+    return res && parseInt(res) === 1
+  }
 
   async function createTransaction(
     toAddress,
@@ -109,39 +108,40 @@ const NFT = ({ environment, capsule }) => {
       functionCallData = contract.methods[functionName](...functionArgs).encodeABI();
     }
 
-    const tx = new FeeMarketEIP1559Transaction({
-      to: !deployByteCode ? toAddress : undefined,
-      value: value ? web3.utils.toHex(web3.utils.toWei(value, 'gwei')) : undefined,
+    const tx = {
+      from: Object.values(capsule.getWallets())[0]?.address,
+      to: toAddress,
+      value: value ? web3.utils.toHex(web3.utils.toWei(value, 'ether')) : undefined,
       gasLimit: web3.utils.toHex(Number(gasAmount)),
       maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei(maxPriorityFeePerGas, 'gwei')),
       maxFeePerGas: web3.utils.toHex(web3.utils.toWei(maxFeePerGas, 'gwei')),
       nonce: web3.utils.toHex(Number(nonce)),
       data: functionCallData || deployByteCode || undefined,
-      chainId: web3.utils.toHex(chainId),
-      type: '0x02',
-    });
-    return tx.serialize().toString('base64');
+      chainId,
+      type: 2,
+    };
+    return tx;
   }
 
   async function sendTx() {
-
-    const walletId = capsule.getWallets()?.[Object.keys(capsule.getWallets())[0]]?.id;
-
     const nonce = await web3.eth.getTransactionCount(Object.values(capsule.getWallets())[0].address);
     const tx = await createTransaction(
-      DEFAULT_CONTRACT_ADDRESS,
-      "0",
-      "140000",
+      MINTER_CONTRACT_ADDRESS,
+      MINT_PRICE,
+      "167584",
       '1',
-      '3',
+      '1.5',
       nonce.toString(),
       DEFAULT_CHAIN_ID,
-      JSON.stringify(DEFAULT_CONTRACT_ABI),
-      'store',
-      ['808'],
+      JSON.stringify(MINTER_CONTRACT_ABI),
+      'mintPublic',
+      [NFT_CONTRACT_ADDRESS, MINTER_FEE_RECIPIENT, MINTER_IF_NOT_PAYER, MINTER_QUANTITY],
       '',
     );
-    await capsule.sendTransaction(walletId, tx, `${DEFAULT_CHAIN_ID}`);
+
+    const txResponse = await ethersSigner.sendTransaction(tx);
+    const txReceipt = await txResponse.wait();
+    return txReceipt?.status === 1 // is success
   }
 
   async function faucet() {
@@ -217,12 +217,13 @@ const NFT = ({ environment, capsule }) => {
               </li>
               <li>
                 <span className='list-text'><span className="number">2.</span> Mint the NFT</span>
-                <Tooltip placement='right' color="white" label="Congratulations! Refresh the page to mint again." isDisabled={txState !== 'sent'}>
+                <Tooltip placement='right' color="white" label="Congratulations! You have minted the Capsule NFT." isDisabled={txState !== 'sent'}>
                   <Button
                     width="150px"
                     height="50px"
                     backgroundColor={{
                       "not_sent": 'black',
+                      "error": 'red',
                       "init": 'blue',
                       "sent": 'green',
                     }[txState]}
@@ -231,10 +232,18 @@ const NFT = ({ environment, capsule }) => {
                     onClick={
                       async () => {
                         if (txState === 'not_sent') {
-                          setTxState("init")
-                          setFaucetState('not_sent')
-                          await sendTx()
-                          setTxState("sent")
+                          setTxState("init");
+                          setFaucetState('not_sent');
+                          await sendTx().then((isSuccess) => {
+                            if (isSuccess) {
+                              setTxState("sent");
+                            } else {
+                              setTxState("error");
+                            }
+                          }).catch(e => {
+                            console.error(e);
+                            setTxState("error");
+                          })
                         }
                       }}
                   >
@@ -245,6 +254,7 @@ const NFT = ({ environment, capsule }) => {
                         "not_sent": `Mint NFT!`,
                         "init": "Pending...",
                         "sent": "Minted!",
+                        "error": "Failed!"
                       }[txState]}
                     </Text>
                   </Button>
@@ -264,6 +274,9 @@ const NFT = ({ environment, capsule }) => {
               <p style={{ fontSize: '18px', fontWeight: 'bold', fontStyle: "italic" }}>Track your funded wallet <a target='_blank' href={link} rel="noreferrer" style={{ color: "white" }}><u>here</u></a></p>
             </div>
             )}
+            {txState === "error" && (<div style={{ color: "white", marginBottom: 20 }}>
+              <p style={{ fontSize: '18px', fontWeight: 'bold', fontStyle: "italic" }}>Failed to send transaction, please refresh and try again or ask Capsule for assistance.</p>
+            </div>)}
           </div>
         </div>
       </div>}

@@ -6,6 +6,7 @@
     "@ethereumjs/tx": "^4.2.0",
     "@usecapsule/web-sdk": "0.27.0",
     "buffer": "^6.0.3",
+    "ethers": "^6.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.3.1",
