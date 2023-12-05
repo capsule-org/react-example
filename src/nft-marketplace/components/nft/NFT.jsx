@@ -1,7 +1,7 @@
 /* eslint-disable import/first */
 import { Buffer } from 'buffer'
 global.Buffer = Buffer
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import './nft.css'
 import { ethers } from "ethers"
 import Web3 from 'web3'
@@ -10,7 +10,7 @@ import { Button, Text, Tooltip } from '@chakra-ui/react'
 import { getBaseUrl } from '@usecapsule/web-sdk/dist/core/external/capsuleClient'
 import { CapsuleButton } from '@usecapsule/web-sdk/dist/modal/CapsuleModal';
 import { CapsuleEthersSigner } from "@usecapsule/web-sdk"
-import { Header, } from '../../components'
+import { Header } from '../../components'
 import MINTER_CONTRACT_ABI from "./MINTER_ABI.json"
 import NFT_ABI from "./NFT_ABI.json"
 
@@ -32,8 +32,7 @@ const NFT = ({ environment, capsule }) => {
   const [faucetState, setFaucetState] = useState('not_sent');
   const [loggedIn, setLoggedIn] = useState(false);
   const [hasUsedFaucet, setHasUsedFaucet] = useState(false);
-
-  let prevWalletAddress = useRef();
+  const [walletAddress, setWalletAddress] = useState(undefined);
 
   useEffect(() => {
     const updateLoginStatus = async () => {
@@ -45,14 +44,8 @@ const NFT = ({ environment, capsule }) => {
       }
 
       const currentWalletAddress = Object.values(capsule.getWallets())?.[0]?.address;
-      if (currentWalletAddress && currentWalletAddress !== prevWalletAddress.current) {
-        const faucetUsed = await hasWalletUsedCapsuleFaucet();
-        setHasUsedFaucet(faucetUsed);
-        prevWalletAddress.current = currentWalletAddress;
-        const didMintNFT = await hasMintedNFT()
-        if (didMintNFT) {
-          setTxState("sent")
-        }
+      if (currentWalletAddress !== walletAddress) {
+        setWalletAddress(currentWalletAddress);
       }
     };
 
@@ -67,6 +60,21 @@ const NFT = ({ environment, capsule }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const updateAccountStatus = async () => {
+      if (!walletAddress) return
+      const faucetUsed = await hasWalletUsedCapsuleFaucet();
+      setHasUsedFaucet(faucetUsed);
+      const didMintNFT = await hasMintedNFT()
+      if (didMintNFT) {
+        setTxState("sent")
+      }
+    };
+
+    updateAccountStatus();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [walletAddress]);
+
   async function hasWalletUsedCapsuleFaucet() {
     try {
       const walletId = capsule.getWallets()?.[Object.keys(capsule.getWallets())[0]]?.id;
@@ -80,12 +88,11 @@ const NFT = ({ environment, capsule }) => {
     }
   }
 
-  const link = `https://sepolia.etherscan.io/address/${Object.values(capsule.getWallets())?.[0]?.address}`
+  const link = `https://sepolia.etherscan.io/address/${walletAddress}`
   const web3 = new Web3(INFURA_HOST);
   const ethersSigner = new CapsuleEthersSigner(capsule, provider);
 
   async function hasMintedNFT() {
-    const walletAddress = Object.values(capsule.getWallets())[0]?.address;
     const contract = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_ABI, ethersSigner);
     const res = await contract.balanceOf(walletAddress)
     return res && parseInt(res) === 1
@@ -115,7 +122,7 @@ const NFT = ({ environment, capsule }) => {
       to: toAddress,
       value: value ? web3.utils.toHex(web3.utils.toWei(value, 'ether')) : undefined,
       gasLimit: web3.utils.toHex(Number(gasAmount)),
-      maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei(maxPriorityFeePerGas, 'gwei')),
+      maxPriorityFeePerGas: maxPriorityFeePerGas ? web3.utils.toHex(web3.utils.toWei(maxPriorityFeePerGas, 'gwei')) : undefined,
       maxFeePerGas: maxFeePerGas ? web3.utils.toHex(web3.utils.toWei(maxFeePerGas, 'gwei')) : undefined,
       nonce: web3.utils.toHex(Number(nonce)),
       data: functionCallData || deployByteCode || undefined,
@@ -126,13 +133,13 @@ const NFT = ({ environment, capsule }) => {
   }
 
   async function sendTx() {
-    const nonce = await web3.eth.getTransactionCount(Object.values(capsule.getWallets())[0].address);
+    const nonce = await web3.eth.getTransactionCount(walletAddress);
     const tx = await createTransaction(
       MINTER_CONTRACT_ADDRESS,
       MINT_PRICE,
       "140000",
-      '3.5',
       null,
+      '3',
       nonce.toString(),
       DEFAULT_CHAIN_ID,
       JSON.stringify(MINTER_CONTRACT_ABI),
@@ -142,7 +149,7 @@ const NFT = ({ environment, capsule }) => {
     );
 
     const txResponse = await ethersSigner.sendTransaction(tx);
-    const txReceipt = await txResponse.wait(1, 7_000);
+    const txReceipt = await txResponse.wait(1, 10_000);
     return txReceipt?.status === 1 // is success
   }
 
