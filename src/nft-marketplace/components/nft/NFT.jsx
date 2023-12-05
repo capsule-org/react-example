@@ -63,6 +63,8 @@ const NFT = ({ environment, capsule }) => {
 
     // Clear the interval when the component unmounts
     return () => clearInterval(intervalId);
+  // only set interval on mount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function hasWalletUsedCapsuleFaucet() {
@@ -114,7 +116,7 @@ const NFT = ({ environment, capsule }) => {
       value: value ? web3.utils.toHex(web3.utils.toWei(value, 'ether')) : undefined,
       gasLimit: web3.utils.toHex(Number(gasAmount)),
       maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei(maxPriorityFeePerGas, 'gwei')),
-      maxFeePerGas: web3.utils.toHex(web3.utils.toWei(maxFeePerGas, 'gwei')),
+      maxFeePerGas: maxFeePerGas ? web3.utils.toHex(web3.utils.toWei(maxFeePerGas, 'gwei')) : undefined,
       nonce: web3.utils.toHex(Number(nonce)),
       data: functionCallData || deployByteCode || undefined,
       chainId,
@@ -128,9 +130,9 @@ const NFT = ({ environment, capsule }) => {
     const tx = await createTransaction(
       MINTER_CONTRACT_ADDRESS,
       MINT_PRICE,
-      "167584",
-      '1',
-      '1.5',
+      "140000",
+      '3.5',
+      null,
       nonce.toString(),
       DEFAULT_CHAIN_ID,
       JSON.stringify(MINTER_CONTRACT_ABI),
@@ -140,7 +142,7 @@ const NFT = ({ environment, capsule }) => {
     );
 
     const txResponse = await ethersSigner.sendTransaction(tx);
-    const txReceipt = await txResponse.wait();
+    const txReceipt = await txResponse.wait(1, 7_000);
     return txReceipt?.status === 1 // is success
   }
 
@@ -275,7 +277,7 @@ const NFT = ({ environment, capsule }) => {
             </div>
             )}
             {txState === "error" && (<div style={{ color: "white", marginBottom: 20 }}>
-              <p style={{ fontSize: '18px', fontWeight: 'bold', fontStyle: "italic" }}>Failed to send transaction, please refresh and try again or ask Capsule for assistance.</p>
+              <p style={{ fontSize: '18px', fontWeight: 'bold', fontStyle: "italic" }}>Failed to send transaction. The network may be too busy to handle this request. Please check back later or ask Capsule for assistance.</p>
             </div>)}
           </div>
         </div>
