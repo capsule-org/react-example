@@ -243,16 +243,17 @@ const NFT = ({ environment, capsule }) => {
                         if (txState === 'not_sent') {
                           setTxState("init");
                           setFaucetState('not_sent');
-                          await sendTx().then((isSuccess) => {
+                          try {
+                            const isSuccess = await sendTx();
                             if (isSuccess) {
                               setTxState("sent");
                             } else {
-                              setTxState("error");
+                               setTxState("error");
                             }
-                          }).catch(e => {
+                          } catch (e) {
                             console.error(e);
                             setTxState("error");
-                          })
+                          }
                         }
                       }}
                   >
