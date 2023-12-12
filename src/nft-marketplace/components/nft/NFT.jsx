@@ -139,7 +139,7 @@ const NFT = ({ environment, capsule }) => {
       MINT_PRICE,
       "140000",
       null,
-      '3',
+      '100',
       nonce.toString(),
       DEFAULT_CHAIN_ID,
       JSON.stringify(MINTER_CONTRACT_ABI),
