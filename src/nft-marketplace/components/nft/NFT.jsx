@@ -41,6 +41,7 @@ const NFT = ({ environment, capsule }) => {
       if (!isLoggedIn) {
         setTxState("not_sent")
         setFaucetState("not_sent")
+        setHasUsedFaucet(false)
       }
 
       const currentWalletAddress = Object.values(capsule.getWallets())?.[0]?.address;
@@ -62,7 +63,12 @@ const NFT = ({ environment, capsule }) => {
 
   useEffect(() => {
     const updateAccountStatus = async () => {
-      if (!walletAddress) return
+      if (!walletAddress) {
+        setHasUsedFaucet(false);
+        setTxState("not_sent")
+        setFaucetState("not_sent")
+        return
+      }
       const faucetUsed = await hasWalletUsedCapsuleFaucet();
       setHasUsedFaucet(faucetUsed);
       const didMintNFT = await hasMintedNFT()
