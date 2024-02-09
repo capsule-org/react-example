@@ -9,7 +9,7 @@ import bids4 from '../../assets/nft.png'
 import { Button, Text, Tooltip } from '@chakra-ui/react'
 import { getBaseUrl } from '@usecapsule/web-sdk/dist/core/external/capsuleClient'
 import { CapsuleButton } from '@usecapsule/web-sdk/dist/modal/CapsuleModal';
-import { CapsuleEthersSigner } from "@usecapsule/web-sdk"
+import { CapsuleEthersSigner, OAuthMethod } from "@usecapsule/web-sdk"
 import { Header } from '../../components'
 import MINTER_CONTRACT_ABI from "./MINTER_ABI.json"
 import NFT_ABI from "./NFT_ABI.json"
@@ -178,7 +178,7 @@ const NFT = ({ environment, capsule }) => {
     <div className="sidebar">
       <Header />
       <div className='center-button'>
-        <CapsuleButton capsule={capsule} appName={"Capsule Demo App"} onClick={() => setHasUsedFaucet(false)} />
+        <CapsuleButton capsule={capsule} appName={"Capsule Demo App"} onClick={() => setHasUsedFaucet(false)} oAuthMethods={[OAuthMethod.GOOGLE]} />
       </div>
       {loggedIn && <div className='bids section__padding nft-center-button'>
         <div className="bids-container">
