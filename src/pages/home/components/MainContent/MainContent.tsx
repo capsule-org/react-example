@@ -70,13 +70,17 @@ const MainContent = () => {
             <MintNFT walletAddress={walletAddress} walletId={walletId} />
           </VStack>
           <Button
+            as="a"
+            href={link}
+            target="_blank"
             variant="link"
-            color="black"
+            // color="black"
+            colorScheme="black"
             textDecoration="underline"
-            _hover={{ color: "darkGrey" }}
-            onClick={() => {
-              window.open(link, "_blank").focus();
-            }}
+            // _hover={{ color: "darkGrey" }}
+            // onClick={() => {
+            //   window.open(link, "_blank").focus();
+            // }}
           >
             View Wallet
           </Button>

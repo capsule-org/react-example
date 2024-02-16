@@ -75,28 +75,27 @@ export const MintNFT = ({ walletId, walletAddress }: MintNFTProps) => {
           <Button
             width="150px"
             height="50px"
-            backgroundColor={
-              isSendTxPending
+            colorScheme={
+              isSendTxError
+                ? "red"
+                : isSendTxPending
                 ? "blue"
                 : isSendTxSuccess || localHasMintedNFT
                 ? "green"
-                : isSendTxError
-                ? "red"
                 : "black"
             }
-            color={"white"}
             onClick={handleSendTx}
             isDisabled={
               isSendTxPending || isSendTxError || isHasMintedNFTLoading
             }
           >
             <Text color="white" fontSize="14px">
-              {isSendTxPending
+              {isSendTxError
+                ? "Failed!"
+                : isSendTxPending
                 ? "Pending..."
                 : isSendTxSuccess || localHasMintedNFT
                 ? "Minted!"
-                : isSendTxError
-                ? "Failed!"
                 : "Mint NFT!"}
             </Text>
           </Button>

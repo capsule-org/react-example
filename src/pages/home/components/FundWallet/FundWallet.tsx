@@ -61,13 +61,12 @@ export const FundWallet = ({ walletId }: FundWalletProps) => {
         <Button
           width={150}
           height="50px"
-          backgroundColor={
+          colorScheme={
             localHasUsedFaucet ? "green" : isFaucetPending ? "blue" : "black"
           }
           isDisabled={
             isFaucetPending || localHasUsedFaucet || isHasUsedFaucetLoading
           }
-          color={"white"}
           onClick={handleUseFaucet}
         >
           <Text color="white" fontSize="14px">
