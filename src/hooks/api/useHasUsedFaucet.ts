@@ -3,7 +3,7 @@ import { getBaseUrl } from "@usecapsule/web-sdk/dist/core/external/capsuleClient
 import { environment } from "../../clients/capsule";
 import { useFaucetStore } from "../../stores/useFaucetStore";
 
-const QUERY_KEY = "HAS_USED_FAUCET";
+export const HAS_USED_FAUCET_QUERY_KEY = "HAS_USED_FAUCET";
 
 export const useHasUsedFaucet = (walletId: string) => {
   const hasWalletUsedFaucet = useFaucetStore(
@@ -16,7 +16,7 @@ export const useHasUsedFaucet = (walletId: string) => {
 
   return useQuery({
     queryFn: async () => await (await fetch(url)).json(),
-    queryKey: [QUERY_KEY, walletId],
+    queryKey: [HAS_USED_FAUCET_QUERY_KEY, walletId],
     select: (data) => !!data?.hasWalletUsedFaucet,
     initialData: { hasWalletUsedFaucet: hasWalletUsedFaucet(walletId) },
   });

@@ -1,4 +1,4 @@
-import { Button, Tooltip, Text, HStack } from "@chakra-ui/react";
+import { Button, Tooltip, Text, HStack, useToast } from "@chakra-ui/react";
 import { useHasUsedFaucet } from "../../../../hooks/api/useHasUsedFaucet";
 import { useFaucet } from "../../../../hooks/api/useFaucet";
 import { useFaucetStore } from "../../../../stores/useFaucetStore";
@@ -9,8 +9,13 @@ interface FundWalletProps {
 }
 
 export const FundWallet = ({ walletId }: FundWalletProps) => {
+  const toast = useToast();
   const setHasUsedFaucet = useFaucetStore((state) => state.setHasUsedFaucet);
-  const { data: hasUsedFaucet } = useHasUsedFaucet(walletId);
+  const localHasUsedFaucet = useFaucetStore((state) =>
+    state.hasWalletUsedFaucet(walletId)
+  );
+  const { data: hasUsedFaucet, isLoading: isHasUsedFaucetLoading } =
+    useHasUsedFaucet(walletId);
   const { mutate: faucet, isPending: isFaucetPending } = useFaucet(walletId);
 
   // Update local storage when api resolves
@@ -21,13 +26,24 @@ export const FundWallet = ({ walletId }: FundWalletProps) => {
   }, [hasUsedFaucet]);
 
   const handleUseFaucet = () => {
-    if (!handleUseFaucet) {
+    if (!localHasUsedFaucet) {
       faucet(undefined, {
-        onError: (e) => {
-          console.error("Error Using Faucet: ", e);
-        },
         onSuccess: () => {
+          toast({
+            title: "Successfully used the faucet to fun your wallet!",
+            status: "success",
+            isClosable: true,
+          });
           setHasUsedFaucet(walletId);
+        },
+        onError: (e) => {
+          toast({
+            title:
+              "Failed to use the faucet. Please try again or ask Capsule for assistance.",
+            status: "error",
+            isClosable: true,
+          });
+          console.error("Error Using Faucet: ", e);
         },
       });
     }
@@ -40,20 +56,22 @@ export const FundWallet = ({ walletId }: FundWalletProps) => {
         placement="right"
         color="white"
         label="We only allow one faucet call per wallet."
-        isDisabled={!hasUsedFaucet}
+        isDisabled={!localHasUsedFaucet}
       >
         <Button
           width={150}
           height="50px"
           backgroundColor={
-            hasUsedFaucet ? "green" : isFaucetPending ? "blue" : "black"
+            localHasUsedFaucet ? "green" : isFaucetPending ? "blue" : "black"
           }
-          isDisabled={hasUsedFaucet}
+          isDisabled={
+            isFaucetPending || localHasUsedFaucet || isHasUsedFaucetLoading
+          }
           color={"white"}
           onClick={handleUseFaucet}
         >
-          <Text fontSize="14px">
-            {hasUsedFaucet
+          <Text color="white" fontSize="14px">
+            {localHasUsedFaucet
               ? "Faucet Used!"
               : isFaucetPending
               ? "Pending..."

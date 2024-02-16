@@ -1,4 +1,11 @@
-import { Button, Tooltip, Text, HStack, VStack } from "@chakra-ui/react";
+import {
+  Button,
+  Tooltip,
+  Text,
+  HStack,
+  VStack,
+  useToast,
+} from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useMintNFT } from "../../../../hooks/api/useMintNFT";
 import { useHasMintedNFT } from "../../../../hooks/api/useHasMintedNFT";
@@ -10,15 +17,20 @@ interface MintNFTProps {
 }
 
 export const MintNFT = ({ walletId, walletAddress }: MintNFTProps) => {
+  const toast = useToast();
   const setHasMintedNFT = useNFTStore((state) => state.setHasMintedNFT);
-  const { data: hasMintedNFT } = useHasMintedNFT(walletAddress, walletId);
-  console.log("🚀 ~ MintNFT ~ hasMintedNFT:", hasMintedNFT);
+  const localHasMintedNFT = useNFTStore((state) =>
+    state.hasWalletMintedNFTt(walletId)
+  );
+  const { data: hasMintedNFT, isLoading: isHasMintedNFTLoading } =
+    useHasMintedNFT(walletAddress, walletId);
   const {
     mutate: sendTx,
     isPending: isSendTxPending,
     isSuccess: isSendTxSuccess,
     isError: isSendTxError,
-  } = useMintNFT(walletAddress);
+    reset: resetSendTx,
+  } = useMintNFT(walletAddress, walletId);
 
   // Update local storage when api resolves
   useEffect(() => {
@@ -28,7 +40,26 @@ export const MintNFT = ({ walletId, walletAddress }: MintNFTProps) => {
   }, [hasMintedNFT]);
 
   const handleSendTx = () => {
-    sendTx();
+    sendTx(undefined, {
+      onSuccess: () => {
+        toast({
+          title: "Successfully minted the NFT!",
+          status: "success",
+          isClosable: true,
+        });
+      },
+      onError: () => {
+        toast({
+          title:
+            "Failed to send transaction. The network may be too busy to handle this request. Please check back later or ask Capsule for assistance.",
+          status: "error",
+          isClosable: true,
+        });
+        setTimeout(() => {
+          resetSendTx();
+        }, 5000);
+      },
+    });
   };
 
   return (
@@ -38,8 +69,8 @@ export const MintNFT = ({ walletId, walletAddress }: MintNFTProps) => {
         <Tooltip
           placement="right"
           color="white"
-          label="Congratulations! You have minted the Capsule NFT."
-          isDisabled={!isSendTxPending && !hasMintedNFT}
+          label="Congratulations! You have minted the Capsule NFT. Click again to mint again!"
+          isDisabled={!localHasMintedNFT}
         >
           <Button
             width="150px"
@@ -47,7 +78,7 @@ export const MintNFT = ({ walletId, walletAddress }: MintNFTProps) => {
             backgroundColor={
               isSendTxPending
                 ? "blue"
-                : isSendTxSuccess
+                : isSendTxSuccess || localHasMintedNFT
                 ? "green"
                 : isSendTxError
                 ? "red"
@@ -55,11 +86,14 @@ export const MintNFT = ({ walletId, walletAddress }: MintNFTProps) => {
             }
             color={"white"}
             onClick={handleSendTx}
+            isDisabled={
+              isSendTxPending || isSendTxError || isHasMintedNFTLoading
+            }
           >
-            <Text fontSize="14px">
+            <Text color="white" fontSize="14px">
               {isSendTxPending
                 ? "Pending..."
-                : isSendTxSuccess
+                : isSendTxSuccess || localHasMintedNFT
                 ? "Minted!"
                 : isSendTxError
                 ? "Failed!"
@@ -68,12 +102,6 @@ export const MintNFT = ({ walletId, walletAddress }: MintNFTProps) => {
           </Button>
         </Tooltip>
       </HStack>
-      {isSendTxError && (
-        <Text color="red">
-          Failed to send transaction. The network may be too busy to handle this
-          request. Please check back later or ask Capsule for assistance.
-        </Text>
-      )}
     </VStack>
   );
 };

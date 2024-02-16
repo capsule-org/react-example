@@ -12,33 +12,32 @@ const MainContent = () => {
   const [walletAddress, setWalletAddress] = useState<string>(undefined);
   const [walletId, setWalletId] = useState<string>(undefined);
 
+  const clearState = () => {
+    setLoggedIn(false);
+    setWalletAddress(undefined);
+    setWalletId(undefined);
+  };
+
+  const updateLoginStatus = async () => {
+    const isLoggedIn = await capsule.isSessionActive();
+    console.log("🚀 ~ updateLoginStatus ~ isLoggedIn:", isLoggedIn);
+    setLoggedIn(isLoggedIn);
+
+    const currentWalletAddress = Object.values(capsule.getWallets())?.[0]
+      ?.address;
+    if (currentWalletAddress !== walletAddress) {
+      setWalletAddress(currentWalletAddress);
+    }
+
+    const currentWalletId =
+      capsule.getWallets()?.[Object.keys(capsule.getWallets())[0]]?.id;
+    if (currentWalletId !== walletId) {
+      setWalletId(currentWalletId);
+    }
+  };
+
   useEffect(() => {
-    const updateLoginStatus = async () => {
-      const isLoggedIn = await capsule.isSessionActive();
-      setLoggedIn(isLoggedIn);
-
-      const currentWalletAddress = Object.values(capsule.getWallets())?.[0]
-        ?.address;
-      if (currentWalletAddress !== walletAddress) {
-        setWalletAddress(currentWalletAddress);
-      }
-
-      const currentWalletId =
-        capsule.getWallets()?.[Object.keys(capsule.getWallets())[0]]?.id;
-      if (currentWalletId !== walletId) {
-        setWalletId(currentWalletId);
-      }
-    };
-
     updateLoginStatus();
-
-    // Then call it every second
-    const intervalId = setInterval(updateLoginStatus, 1000);
-
-    // Clear the interval when the component unmounts
-    return () => clearInterval(intervalId);
-    // only set interval on mount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const link = `https://sepolia.etherscan.io/address/${walletAddress}`;
@@ -51,9 +50,20 @@ const MainContent = () => {
           capsule={capsule}
           appName={"Capsule Demo App"}
           oAuthMethods={[OAuthMethod.GOOGLE]}
+          overrides={{
+            onCloseOverride: () => {
+              updateLoginStatus();
+            },
+            onClickOverride: () => {
+              if (loggedIn) {
+                clearState();
+              }
+            },
+            preserveOnClickFunctionality: true,
+          }}
         />
       </Flex>
-      {loggedIn && walletId && (
+      {loggedIn && walletId && walletAddress && (
         <VStack>
           <Heading>Instructions</Heading>
           <VStack minW={350}>
@@ -62,9 +72,9 @@ const MainContent = () => {
           </VStack>
           <Button
             variant="link"
-            color="white"
+            color="black"
             textDecoration="underline"
-            _hover={{ color: "#181818" }}
+            _hover={{ color: "darkGrey" }}
             onClick={() => {
               window.open(link, "_blank").focus();
             }}

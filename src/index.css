@@ -105,6 +105,7 @@
   --marquee-gutter: var(--marquee-fade-width);
   --marquee-duration: 16s;
   --marquee-duration-modifier: 1;
+  --chakra-colors-brand-addressColor: "black" !important;
 }
 
 .theme-dark {

@@ -12,7 +12,7 @@ export const NFT = () => {
         py={4}
         borderRadius={20}
       >
-        <Heading>Capsule NFT</Heading>
+        <Heading color="white">Capsule NFT</Heading>
         <Image
           src={nft}
           alt="NFT"

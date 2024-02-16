@@ -5,7 +5,7 @@ import NFT_ABI from "../../config/NFT_ABI.json";
 import { ethersSigner } from "../../clients/ethersSigner";
 import { useNFTStore } from "../../stores/useNFTStore";
 
-const QUERY_KEY = "HAS_MINTED_NFT";
+export const HAS_MINTED_NFT_QUERY_KEY = "HAS_MINTED_NFT";
 
 export const useHasMintedNFT = (walletAddress: string, walletId: string) => {
   const hasMintedNFT = useNFTStore((state) => state.hasWalletMintedNFTt);
@@ -20,7 +20,7 @@ export const useHasMintedNFT = (walletAddress: string, walletId: string) => {
       const res = await contract.balanceOf(walletAddress);
       return !!res && parseInt(res) === 1;
     },
-    queryKey: [QUERY_KEY, walletAddress],
+    queryKey: [HAS_MINTED_NFT_QUERY_KEY, walletAddress],
     select: (data) => !!data,
     initialData: hasMintedNFT(walletId),
   });

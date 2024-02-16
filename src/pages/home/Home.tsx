@@ -13,7 +13,6 @@ const Home = () => {
         src="https://assets.codepen.io/44800/capsule-sunrise-about-hero.svg?"
         alt=""
       />
-      {/* <Box position="absolute" w="100%" h="100%" backgroundColor="#00000066" /> */}
       <Container
         maxW="6xl"
         position="relative"
