@@ -74,13 +74,8 @@ const MainContent = () => {
             href={link}
             target="_blank"
             variant="link"
-            // color="black"
             colorScheme="black"
             textDecoration="underline"
-            // _hover={{ color: "darkGrey" }}
-            // onClick={() => {
-            //   window.open(link, "_blank").focus();
-            // }}
           >
             View Wallet
           </Button>
