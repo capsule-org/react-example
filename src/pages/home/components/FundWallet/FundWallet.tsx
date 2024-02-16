@@ -30,7 +30,7 @@ export const FundWallet = ({ walletId }: FundWalletProps) => {
       faucet(undefined, {
         onSuccess: () => {
           toast({
-            title: "Successfully used the faucet to fun your wallet!",
+            title: "Successfully used the faucet to fund your wallet!",
             status: "success",
             isClosable: true,
           });
