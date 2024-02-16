@@ -20,7 +20,6 @@ const MainContent = () => {
 
   const updateLoginStatus = async () => {
     const isLoggedIn = await capsule.isSessionActive();
-    console.log("🚀 ~ updateLoginStatus ~ isLoggedIn:", isLoggedIn);
     setLoggedIn(isLoggedIn);
 
     const currentWalletAddress = Object.values(capsule.getWallets())?.[0]
