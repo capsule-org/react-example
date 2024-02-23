@@ -61,9 +61,10 @@ export const FundWallet = ({ walletId }: FundWalletProps) => {
         <Button
           width={150}
           height="50px"
-          colorScheme={
-            localHasUsedFaucet ? "green" : isFaucetPending ? "blue" : "black"
+          backgroundColor={
+            localHasUsedFaucet ? "green" : isFaucetPending ? "blue" : "#080B0F"
           }
+          _hover={{ backgroundColor: "#080B0F80" }}
           isDisabled={
             isFaucetPending || localHasUsedFaucet || isHasUsedFaucetLoading
           }
@@ -74,7 +75,7 @@ export const FundWallet = ({ walletId }: FundWalletProps) => {
               ? "Faucet Used!"
               : isFaucetPending
               ? "Pending..."
-              : "Faucet"}
+              : "Use Faucet"}
           </Text>
         </Button>
       </Tooltip>

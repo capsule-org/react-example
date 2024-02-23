@@ -75,15 +75,16 @@ export const MintNFT = ({ walletId, walletAddress }: MintNFTProps) => {
           <Button
             width="150px"
             height="50px"
-            colorScheme={
+            backgroundColor={
               isSendTxError
                 ? "red"
                 : isSendTxPending
                 ? "blue"
                 : isSendTxSuccess || localHasMintedNFT
                 ? "green"
-                : "black"
+                : "#080B0F"
             }
+            _hover={{ backgroundColor: "#080B0F80" }}
             onClick={handleSendTx}
             isDisabled={
               isSendTxPending || isSendTxError || isHasMintedNFTLoading
