@@ -48,7 +48,7 @@ const MainContent = () => {
         <CapsuleButton
           capsule={capsule}
           appName={"Capsule Demo App"}
-          oAuthMethods={[OAuthMethod.GOOGLE]}
+          oAuthMethods={[OAuthMethod.GOOGLE, OAuthMethod.DISCORD]}
           overrides={{
             onCloseOverride: () => {
               updateLoginStatus();

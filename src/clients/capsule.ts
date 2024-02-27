@@ -1,5 +1,5 @@
 import { Environment } from "@usecapsule/web-sdk";
-import { Capsule } from "@usecapsule/web-sdk/dist/Capsule";
+import Capsule from "@usecapsule/web-sdk";
 
 // Get an api key at usecapsule.com
 const TEST_API_KEY = "d0b61c2c8865aaa2fb12886651627271";

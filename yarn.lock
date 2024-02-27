@@ -5016,17 +5016,17 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@usecapsule/user-management-client@0.21.0":
-  version "0.21.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-0.21.0.tgz#c8d2d141addcdba106def8a659aaf8c60031c610"
-  integrity sha512-POJ5IjakGwOnczmc4OOGg0Dr789zymd2W1Apy5pkrRTWfiHh+hE9CRiXwatzlSGNnQCsxBHciyFnw0YOafKApg==
+"@usecapsule/user-management-client@0.24.0":
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-0.24.0.tgz#4061ec53162a2bd11276557bf72ddbfd680c9673"
+  integrity sha512-0Pp0lxHd9RkC7kUTHrIaQ3Ny7DE43PBeZba4rgZCrC+0kYX+VtQSD8/QBtHQeeWF0Rg2Pbe43SMFf4jmjhLYcg==
   dependencies:
     axios "^1.6.3"
 
-"@usecapsule/web-sdk@^0.35.1":
-  version "0.35.1"
-  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-0.35.1.tgz#32cf4a119ea8e223242f667a1d3b11743456a347"
-  integrity sha512-Ogft09Yp9XEyZbhY9hV3vUGvJAMZ1rEwuriq7ppucNmT0MphkMLB4vtdWm1rm1nl2gJ7chAECJ3AIZn7Y1N+0g==
+"@usecapsule/web-sdk@^0.35.3":
+  version "0.35.3"
+  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-0.35.3.tgz#6cccab7d80b42d446309db7c59c5a43c5bb7ee83"
+  integrity sha512-CBYZfgqxs6frY/gD+bEaf1o0nAz5bsvll3O8qq/62IfT0zyx+nKNw2KCDYbUiNDh6et76OqZ8mGUyI2T605I/A==
   dependencies:
     "@celo/utils" "3.2.0"
     "@chakra-ui/react" "1.8.9"
@@ -5037,7 +5037,7 @@
     "@emotion/react" "^11.10.8"
     "@emotion/styled" "^11.10.8"
     "@ramp-network/ramp-instant-sdk" "^4.0.2"
-    "@usecapsule/user-management-client" "0.21.0"
+    "@usecapsule/user-management-client" "0.24.0"
     "@wagmi/chains" "^1.8.0"
     "@wagmi/connectors" "^3.0.0"
     assert "^2.1.0"
