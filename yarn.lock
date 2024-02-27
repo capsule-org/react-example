@@ -5023,10 +5023,10 @@
   dependencies:
     axios "^1.6.3"
 
-"@usecapsule/web-sdk@^0.35.3":
-  version "0.35.3"
-  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-0.35.3.tgz#6cccab7d80b42d446309db7c59c5a43c5bb7ee83"
-  integrity sha512-CBYZfgqxs6frY/gD+bEaf1o0nAz5bsvll3O8qq/62IfT0zyx+nKNw2KCDYbUiNDh6et76OqZ8mGUyI2T605I/A==
+"@usecapsule/web-sdk@^0.36.0":
+  version "0.36.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-0.36.0.tgz#76f9464564dbffde6d198afbd62152b8926da60c"
+  integrity sha512-BgkAs55kJbaoCy3Pn/hy+kq94sm1mByNc1OuA63bgY2h0T/OsNSu/3tzoD6g13fvCU54wbvevIl4hEcb/a4Anw==
   dependencies:
     "@celo/utils" "3.2.0"
     "@chakra-ui/react" "1.8.9"
