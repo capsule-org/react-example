@@ -1,15 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './nft-marketplace/App';
+import "./shim";
+import "./index.css";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 
-
-console.log(process.env)
 ReactDOM.render(
-  <BrowserRouter>
-    {<App/>}
-  </BrowserRouter>,
-  document.getElementById('root')
+  <BrowserRouter>{<App />}</BrowserRouter>,
+  document.getElementById("root")
 );
-
