@@ -1,5 +1,7 @@
 import { Heading, VStack, Image, Flex } from "@chakra-ui/react";
 import nft from "../../../../assets/nft.png";
+import shefiNft from "../../../../assets/shefi-nft.gif";
+import { isProd } from "../../../../constants";
 
 export const NFT = () => {
   return (
@@ -14,7 +16,7 @@ export const NFT = () => {
       >
         <Heading color="white">Capsule NFT</Heading>
         <Image
-          src={nft}
+          src={isProd ? shefiNft : nft}
           alt="NFT"
           w="75%"
           maxW={200}
