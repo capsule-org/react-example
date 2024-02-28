@@ -7,9 +7,8 @@ import { ethers } from "ethers"
 import Web3 from 'web3'
 import bids4 from '../../assets/nft.png'
 import { Button, Text, Tooltip } from '@chakra-ui/react'
-import { getBaseUrl } from '@usecapsule/web-sdk/dist/core/external/capsuleClient'
-import { CapsuleButton } from '@usecapsule/web-sdk/dist/modal/CapsuleModal';
-import { CapsuleEthersSigner, OAuthMethod } from "@usecapsule/web-sdk"
+import { getBaseUrl, CapsuleButton, OAuthMethod } from '@usecapsule/react-sdk'
+import { CapsuleEthersSigner } from '@usecapsule/ethers-v6-integration'
 import { Header } from '../../components'
 import MINTER_CONTRACT_ABI from "./MINTER_ABI.json"
 import NFT_ABI from "./NFT_ABI.json"

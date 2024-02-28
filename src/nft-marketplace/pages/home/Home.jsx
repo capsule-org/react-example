@@ -1,6 +1,6 @@
 import React from 'react';
 import { NFT, Header, } from '../../components'
-import Capsule, { Environment } from "@usecapsule/web-sdk";
+import Capsule, { Environment } from "@usecapsule/react-sdk";
 import './home.css'
 
 // Get an api key at usecapsule.com
