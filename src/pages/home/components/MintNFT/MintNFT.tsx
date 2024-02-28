@@ -84,15 +84,15 @@ export const MintNFT = ({ walletId, walletAddress }: MintNFTProps) => {
                 ? "green"
                 : "#080B0F"
             }
-            borderWidth={1}
-            borderColor={
+            borderWidth={
               isSendTxError ||
               isSendTxPending ||
               isSendTxSuccess ||
               localHasMintedNFT
-                ? "none"
-                : "white"
+                ? 0
+                : 1
             }
+            borderColor={"white"}
             _hover={{ backgroundColor: "#080B0F80" }}
             onClick={handleSendTx}
             isDisabled={

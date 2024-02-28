@@ -45,7 +45,7 @@ export const useMintNFT = (walletAddress: string, walletId: string) => {
       );
 
       const txResponse = await ethersSigner.sendTransaction(tx as any);
-      const txReceipt = await txResponse.wait(1, 10_000);
+      const txReceipt = await txResponse.wait(1, 15_000);
 
       if (txReceipt?.status !== 1) {
         throw new Error("TX Failed");

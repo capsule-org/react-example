@@ -76,8 +76,8 @@ export const FundWallet = ({ walletId }: FundWalletProps) => {
               ? "blue"
               : "#080B0F",
           }}
-          borderWidth={1}
-          borderColor={localHasUsedFaucet || isFaucetPending ? "none" : "white"}
+          borderWidth={localHasUsedFaucet || isFaucetPending ? 0 : 1}
+          borderColor={"white"}
         >
           <Text color="white" fontSize="14px">
             {localHasUsedFaucet
