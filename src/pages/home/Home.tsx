@@ -18,11 +18,20 @@ const Home = () => {
         position="relative"
         py={24}
         display="flex"
-        flexDirection="column"
-        minHeight="100vh"
-        gap={8}
+        justifyContent="center"
       >
-        <MainContent />
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap={8}
+          backgroundColor="#000000D9"
+          borderRadius={16}
+          pt="20px"
+          pb={33}
+          px={78}
+        >
+          <MainContent />
+        </Box>
       </Container>
     </Box>
   );

@@ -29,8 +29,8 @@ export const useMintNFT = (walletAddress: string, walletId: string) => {
         MINTER_CONTRACT_ADDRESS,
         MINT_PRICE,
         "140000",
-        null,
-        "3",
+        "1",
+        "5",
         nonce,
         DEFAULT_CHAIN_ID,
         JSON.stringify(MINTER_CONTRACT_ABI),
@@ -45,7 +45,7 @@ export const useMintNFT = (walletAddress: string, walletId: string) => {
       );
 
       const txResponse = await ethersSigner.sendTransaction(tx as any);
-      const txReceipt = await txResponse.wait(1, 10_000);
+      const txReceipt = await txResponse.wait(1, 15_000);
 
       if (txReceipt?.status !== 1) {
         throw new Error("TX Failed");

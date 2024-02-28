@@ -65,7 +65,7 @@ export const MintNFT = ({ walletId, walletAddress }: MintNFTProps) => {
   return (
     <VStack width="100%">
       <HStack width="100%" justifyContent="space-between">
-        <Text>2. Mint the NFT</Text>
+        <Text fontWeight={700}>2. Mint the NFT</Text>
         <Tooltip
           placement="right"
           color="white"
@@ -84,6 +84,15 @@ export const MintNFT = ({ walletId, walletAddress }: MintNFTProps) => {
                 ? "green"
                 : "#080B0F"
             }
+            borderWidth={
+              isSendTxError ||
+              isSendTxPending ||
+              isSendTxSuccess ||
+              localHasMintedNFT
+                ? 0
+                : 1
+            }
+            borderColor={"white"}
             _hover={{ backgroundColor: "#080B0F80" }}
             onClick={handleSendTx}
             isDisabled={
