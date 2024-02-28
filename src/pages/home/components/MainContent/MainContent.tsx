@@ -64,7 +64,7 @@ const MainContent = () => {
       </Flex>
       {loggedIn && walletId && walletAddress && (
         <VStack>
-          <Heading>Instructions</Heading>
+          <Heading fontSize={32}>Instructions</Heading>
           <VStack minW={350}>
             <FundWallet walletId={walletId} />
             <MintNFT walletAddress={walletAddress} walletId={walletId} />
@@ -74,8 +74,10 @@ const MainContent = () => {
             href={link}
             target="_blank"
             variant="link"
-            colorScheme="black"
             textDecoration="underline"
+            fontSize={16}
+            fontWeight={700}
+            color="white"
           >
             View Wallet
           </Button>

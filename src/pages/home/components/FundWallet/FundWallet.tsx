@@ -51,7 +51,7 @@ export const FundWallet = ({ walletId }: FundWalletProps) => {
 
   return (
     <HStack width="100%" justifyContent="space-between">
-      <Text>1. Fund your wallet</Text>
+      <Text fontWeight={700}>1. Fund your wallet</Text>
       <Tooltip
         placement="right"
         color="white"
@@ -69,6 +69,15 @@ export const FundWallet = ({ walletId }: FundWalletProps) => {
             isFaucetPending || localHasUsedFaucet || isHasUsedFaucetLoading
           }
           onClick={handleUseFaucet}
+          _disabled={{
+            backgroundColor: localHasUsedFaucet
+              ? "green"
+              : isFaucetPending
+              ? "blue"
+              : "#080B0F",
+          }}
+          borderWidth={1}
+          borderColor={localHasUsedFaucet || isFaucetPending ? "none" : "white"}
         >
           <Text color="white" fontSize="14px">
             {localHasUsedFaucet

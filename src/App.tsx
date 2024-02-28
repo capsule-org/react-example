@@ -10,14 +10,14 @@ const theme = extendTheme({
   components: {
     Text: {
       baseStyle: {
-        textColor: "black",
-        fontSize: 18,
+        textColor: "white",
+        fontSize: 16,
         fontFamily: "Hanken Grotesk, sans-serif",
       },
     },
     Heading: {
       baseStyle: {
-        textColor: "black",
+        textColor: "white",
         fontFamily: "Hanken Grotesk, sans-serif",
       },
     },
