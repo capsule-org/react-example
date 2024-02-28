@@ -29,8 +29,8 @@
     "start:gated": "PORT=3007 REACT_APP_GATED=true craco start",
     "build": "craco build",
     "serve-build": "PORT=3007 serve -s build",
-    "deploy-beta": "REACT_APP_ENV=beta yarn && yarn build && aws s3 sync build/ s3://capsule-beta-example --acl public-read --profile beta",
-    "deploy-prod": "REACT_APP_ENV=prod yarn && yarn build && aws s3 sync build/ s3://capsule-prod-example --acl public-read --profile prod"
+    "deploy-beta": "yarn && REACT_APP_ENV=beta yarn build && aws s3 sync build/ s3://capsule-beta-example --acl public-read --profile beta",
+    "deploy-prod": "yarn && REACT_APP_ENV=prod yarn build && aws s3 sync build/ s3://capsule-prod-example --acl public-read --profile prod"
   },
   "eslintConfig": {
     "extends": [
