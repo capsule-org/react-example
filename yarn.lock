@@ -3471,54 +3471,55 @@
     "@typescript-eslint/types" "5.62.0"
     eslint-visitor-keys "^3.3.0"
 
-"@usecapsule/core-sdk@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/core-sdk/-/core-sdk-1.1.0.tgz#eb98c5ce5e63bb3f3d20e82aced088628a16e3a2"
-  integrity sha512-Og5Bkj/t0bpAMTkz2aSnWXxNWMVjcnhGfpTmCmCzhYri9ZMx+UTS5TRhRIFn+17aZtH4qTaud3HOv+sFEyPCBQ==
+"@usecapsule/core-sdk@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/core-sdk/-/core-sdk-1.3.0.tgz#06cf03a8ebadb3a0130ae4115bae7259159d93af"
+  integrity sha512-nG39FCNCVYkCKtRD7z/XuZR/UnNfTeqQeIzNUUoL77kFXttv4tlgwpXsFw+73gvLFK5BmZmNhYultTqvTYWgzQ==
   dependencies:
     "@celo/utils" "^3.2.0"
-    "@usecapsule/user-management-client" "1.0.0"
+    "@usecapsule/user-management-client" "1.2.0"
     base64url "^3.0.1"
     buffer "6.0.3"
     ethereumjs-util "7.1.5"
     node-forge "^1.3.1"
 
-"@usecapsule/ethers-v6-integration@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/ethers-v6-integration/-/ethers-v6-integration-1.1.0.tgz#d9ce038dea700d1ebcb0e9d06dd5d488c2d2a448"
-  integrity sha512-idiRZC16cTByJGl4rZATNZQowm1gXCLo7ho9gXYKHqHGaxJ5wgEU1YDr0G/JfihhMV6DPS5tPpoDAKFYJrngBQ==
+"@usecapsule/ethers-v6-integration@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/ethers-v6-integration/-/ethers-v6-integration-1.3.0.tgz#68e196239f0b82f84b3e31cb528eefbc3bd8629e"
+  integrity sha512-etMEfAVlqNioZphoAlBZz6KX7854XSJbTWAMdgRbFw6XkXWKwjy9G1yTmhn64gRathhlktgQlDHOeh7hg2xxlA==
   dependencies:
-    "@usecapsule/core-sdk" "1.1.0"
+    "@usecapsule/core-sdk" "1.3.0"
     ethers "^6.6.4"
 
-"@usecapsule/react-sdk@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-1.1.0.tgz#f9524118cfe82609ed21775af8e2a1b0ebe88e49"
-  integrity sha512-572F94H9xw96IIMes6jEl4wfPOfKQaRKS8hJyvq/KqXu0ESA1Q+9O25hXzpgpwX7Mf7cYkuJdSAej+vMA/3xCw==
+"@usecapsule/react-sdk@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-1.3.0.tgz#62c13a8c06ac957f454411c3e6df3fa27318e219"
+  integrity sha512-OiHxRApxLvyE4boUtFvWJG4MPZcpANheSQQz1rTdfORr80bmgtTgIfK1vadDHaGCQ1d1fFZxG1Fe8rsrZ6I8zQ==
   dependencies:
     "@chakra-ui/react" "1.8.9"
     "@emotion/react" "^11.10.8"
     "@emotion/styled" "^11.10.8"
     "@ramp-network/ramp-instant-sdk" "^4.0.2"
-    "@usecapsule/web-sdk" "1.1.0"
+    "@usecapsule/web-sdk" "1.3.0"
     framer-motion "^11.0.5"
     polished "^4.2.2"
     react-qr-code "2.0.11"
 
-"@usecapsule/user-management-client@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-1.0.0.tgz#b26bde15b6caf378ab241ffdbb4223a884a6f3e4"
-  integrity sha512-xHewdhb9p9zjRpDHnKfdOj/imRcb8kP7ccn9AWdPTb0LFwLd2VMT59vuZSRcZGQWXDfU/kRih8YR8AlNiFqpXw==
+"@usecapsule/user-management-client@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-1.2.0.tgz#2ab2ca36f5012f5cccaf047b88f77ee86a33024d"
+  integrity sha512-T4Tb81FFAyfGM1DK5phS/jPAfZksY2+p/ZTehoNkneJOojRKhgxGS8zVfgJYZ5q/eFpQ9xC4k2OR4bE8IEFqCQ==
   dependencies:
     axios "^1.6.3"
+    query-string "^9.0.0"
 
-"@usecapsule/web-sdk@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-1.1.0.tgz#8bf069edbbe777c353b362fb4cba058ab8e89a00"
-  integrity sha512-PnlcZ884MHH2xqB6OlJpc1ezqr9Qhkb0688epDyxzx8Z1+EkvRFolNCO45/pP1EWzBHn1OXA7VlHdtVfeshHEg==
+"@usecapsule/web-sdk@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-1.3.0.tgz#ee0616ac8b5a75116b0043ca8bd7f0839b40ffe9"
+  integrity sha512-F0J6abFT1oK/REDaSn70kPcPqumEWZ5dtmewh7zHzoGX88WNU91/nDNRptX4ahMBdw0bTkB2UBkA6QOqH/D2NA==
   dependencies:
-    "@usecapsule/core-sdk" "1.1.0"
-    "@usecapsule/user-management-client" "1.0.0"
+    "@usecapsule/core-sdk" "1.3.0"
+    "@usecapsule/user-management-client" "1.2.0"
     assert "^2.1.0"
     base64url "3.0.1"
     buffer "6.0.3"
@@ -5399,6 +5400,11 @@ decode-uri-component@^0.2.0:
   resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
   integrity sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==
 
+decode-uri-component@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.4.1.tgz#2ac4859663c704be22bf7db760a1494a49ab2cc5"
+  integrity sha512-+8VxcR21HhTy8nOt6jf20w0c9CADrw1O8d+VZ/YzzCt4bJ3uBjw+D1q2osAB8RnpwwaeYBxy0HyKQxD5JBMuuQ==
+
 decompress-response@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/decompress-response/-/decompress-response-3.3.0.tgz#80a4dd323748384bfa248083622aedec982adff3"
@@ -6516,6 +6522,11 @@ fill-range@^7.0.1:
   integrity sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==
   dependencies:
     to-regex-range "^5.0.1"
+
+filter-obj@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/filter-obj/-/filter-obj-5.1.0.tgz#5bd89676000a713d7db2e197f660274428e524ed"
+  integrity sha512-qWeTREPoT7I0bifpPUXtxkZJ1XJzxWtfoWWkdVGqa+eCr3SHW/Ocp89o8vLvbUuQnadybJpjOKu4V+RwO6sGng==
 
 finalhandler@1.2.0:
   version "1.2.0"
@@ -10064,6 +10075,15 @@ query-string@^5.0.1:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
+query-string@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-9.0.0.tgz#1fe177cd95545600f0deab93f5fb02fd4e3e7273"
+  integrity sha512-4EWwcRGsO2H+yzq6ddHcVqkCQ2EFUSfDMEjF8ryp8ReymyZhIuaFRGLomeOQLkrzacMHoyky2HW0Qe30UbzkKw==
+  dependencies:
+    decode-uri-component "^0.4.1"
+    filter-obj "^5.1.0"
+    split-on-first "^3.0.0"
+
 querystringify@^2.1.1:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
@@ -11096,6 +11116,11 @@ spdy@^4.0.2:
     http-deceiver "^1.2.7"
     select-hose "^2.0.0"
     spdy-transport "^3.0.0"
+
+split-on-first@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/split-on-first/-/split-on-first-3.0.0.tgz#f04959c9ea8101b9b0bbf35a61b9ebea784a23e7"
+  integrity sha512-qxQJTx2ryR0Dw0ITYyekNQWpz6f8dGd7vffGNflQQ3Iqj9NJ6qiZ7ELpZsJ/QBhIVAiDfXdag3+Gp8RvWa62AA==
 
 sprintf-js@~1.0.2:
   version "1.0.3"
