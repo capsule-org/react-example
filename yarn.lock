@@ -3471,59 +3471,59 @@
     "@typescript-eslint/types" "5.62.0"
     eslint-visitor-keys "^3.3.0"
 
-"@usecapsule/core-sdk@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/core-sdk/-/core-sdk-0.2.0.tgz#0fb338e010c341118443e71a4dd4cd8f339fea87"
-  integrity sha512-T0pLqJn+4mEpiNAXH9goTOBt/o3ix0jB3uTd8KpYzkp1lU+lScelIk7RaxtBBTv7i2dAGeAHd4kfKh6zMQgeEQ==
+"@usecapsule/core-sdk@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/core-sdk/-/core-sdk-1.1.0.tgz#eb98c5ce5e63bb3f3d20e82aced088628a16e3a2"
+  integrity sha512-Og5Bkj/t0bpAMTkz2aSnWXxNWMVjcnhGfpTmCmCzhYri9ZMx+UTS5TRhRIFn+17aZtH4qTaud3HOv+sFEyPCBQ==
   dependencies:
     "@celo/utils" "^3.2.0"
-    "@usecapsule/user-management-client" "0.21.0"
+    "@usecapsule/user-management-client" "1.0.0"
     base64url "^3.0.1"
     buffer "6.0.3"
     ethereumjs-util "7.1.5"
     node-forge "^1.3.1"
 
-"@usecapsule/ethers-v6-integration@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/ethers-v6-integration/-/ethers-v6-integration-0.1.0.tgz#832922954558a4c6a3f910b50da7935142fb3706"
-  integrity sha512-McHQQZNHPq8LayqJSdDLIGHndrs6IMwAIpuSqNNxerujDGnCMm7PK6Uyp8/AboSC1hLyr617Y94o9LCDY4+8xA==
+"@usecapsule/ethers-v6-integration@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/ethers-v6-integration/-/ethers-v6-integration-1.1.0.tgz#d9ce038dea700d1ebcb0e9d06dd5d488c2d2a448"
+  integrity sha512-idiRZC16cTByJGl4rZATNZQowm1gXCLo7ho9gXYKHqHGaxJ5wgEU1YDr0G/JfihhMV6DPS5tPpoDAKFYJrngBQ==
   dependencies:
-    "@usecapsule/core-sdk" "0.2.0"
+    "@usecapsule/core-sdk" "1.1.0"
     ethers "^6.6.4"
 
-"@usecapsule/react-sdk@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-0.1.2.tgz#146b8affe809980eec92702b81ed1f06e41d141c"
-  integrity sha512-VvetXJvyVfElxcWiuQyWNUOOc9gN8bCrHTeXMbbTUsvgZ5TZjcLrJdKWA92KTysLi2YvmFAlec1K6qyqM6lQkw==
+"@usecapsule/react-sdk@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-1.1.0.tgz#f9524118cfe82609ed21775af8e2a1b0ebe88e49"
+  integrity sha512-572F94H9xw96IIMes6jEl4wfPOfKQaRKS8hJyvq/KqXu0ESA1Q+9O25hXzpgpwX7Mf7cYkuJdSAej+vMA/3xCw==
   dependencies:
     "@chakra-ui/react" "1.8.9"
     "@emotion/react" "^11.10.8"
     "@emotion/styled" "^11.10.8"
     "@ramp-network/ramp-instant-sdk" "^4.0.2"
-    "@usecapsule/temp-web-sdk" "0.1.1"
+    "@usecapsule/web-sdk" "1.1.0"
     framer-motion "^11.0.5"
     polished "^4.2.2"
     react-qr-code "2.0.11"
 
-"@usecapsule/temp-web-sdk@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@usecapsule/temp-web-sdk/-/temp-web-sdk-0.1.1.tgz#6a4f2132c1188bb020042b3f13b461b9f3d9c9fb"
-  integrity sha512-gndvCuyLbfhIMUcWtRIkghF6pSlngElv2aiTbhHqNN+vjgHHXZTDR30msisxGvIyGT6ksXCdTztK40SproaHnA==
+"@usecapsule/user-management-client@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-1.0.0.tgz#b26bde15b6caf378ab241ffdbb4223a884a6f3e4"
+  integrity sha512-xHewdhb9p9zjRpDHnKfdOj/imRcb8kP7ccn9AWdPTb0LFwLd2VMT59vuZSRcZGQWXDfU/kRih8YR8AlNiFqpXw==
   dependencies:
-    "@usecapsule/core-sdk" "0.2.0"
-    "@usecapsule/user-management-client" "0.21.0"
+    axios "^1.6.3"
+
+"@usecapsule/web-sdk@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-1.1.0.tgz#8bf069edbbe777c353b362fb4cba058ab8e89a00"
+  integrity sha512-PnlcZ884MHH2xqB6OlJpc1ezqr9Qhkb0688epDyxzx8Z1+EkvRFolNCO45/pP1EWzBHn1OXA7VlHdtVfeshHEg==
+  dependencies:
+    "@usecapsule/core-sdk" "1.1.0"
+    "@usecapsule/user-management-client" "1.0.0"
     assert "^2.1.0"
     base64url "3.0.1"
     buffer "6.0.3"
     cbor-web "8.1.0"
     node-forge "1.3.1"
-
-"@usecapsule/user-management-client@0.21.0":
-  version "0.21.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-0.21.0.tgz#c8d2d141addcdba106def8a659aaf8c60031c610"
-  integrity sha512-POJ5IjakGwOnczmc4OOGg0Dr789zymd2W1Apy5pkrRTWfiHh+hE9CRiXwatzlSGNnQCsxBHciyFnw0YOafKApg==
-  dependencies:
-    axios "^1.6.3"
 
 "@webassemblyjs/ast@1.11.6", "@webassemblyjs/ast@^1.11.5":
   version "1.11.6"
