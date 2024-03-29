@@ -1,4 +1,4 @@
-import { CapsuleEthersSigner } from "@usecapsule/web-sdk";
+import { CapsuleEthersSigner } from '@usecapsule/ethers-v6-integration';
 import { ethers } from "ethers";
 import { INFURA_HOST } from "../constants";
 import { capsule } from "./capsule";

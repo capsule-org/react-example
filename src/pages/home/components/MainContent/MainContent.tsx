@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Button as CapsuleButton, OAuthMethod } from "@usecapsule/web-sdk";
+import { OAuthMethod } from "@usecapsule/web-sdk";
+import { CapsuleButton } from '@usecapsule/react-sdk';
 import Header from "../Header/Header";
 import { NFT } from "../NFT/NFT";
 import { capsule } from "../../../../clients/capsule";
@@ -48,7 +49,7 @@ const MainContent = () => {
         <CapsuleButton
           capsule={capsule}
           appName={"Capsule Demo App"}
-          oAuthMethods={[OAuthMethod.GOOGLE, OAuthMethod.DISCORD]}
+          oAuthMethods={[OAuthMethod.GOOGLE, OAuthMethod.TWITTER, OAuthMethod.FACEBOOK, OAuthMethod.APPLE, OAuthMethod.DISCORD]}
           overrides={{
             onCloseOverride: () => {
               updateLoginStatus();

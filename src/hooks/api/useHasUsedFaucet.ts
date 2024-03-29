@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getBaseUrl } from "@usecapsule/web-sdk/dist/core/external/capsuleClient";
+import { getBaseUrl } from "@usecapsule/web-sdk";
 import { environment } from "../../clients/capsule";
 import { useFaucetStore } from "../../stores/useFaucetStore";
 
