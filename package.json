@@ -9,7 +9,7 @@
     "@ethereumjs/tx": "^4.2.0",
     "@tanstack/react-query": "^5.20.5",
     "@usecapsule/ethers-v6-integration": "^1.5.0",
-    "@usecapsule/react-sdk": "^1.5.0",
+    "@usecapsule/react-sdk": "^2.0.0",
     "@usecapsule/web-sdk": "^1.5.0",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
