@@ -3736,10 +3736,10 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@usecapsule/core-components@^1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@usecapsule/core-components/-/core-components-1.0.12.tgz#15e1ce7e01e632983b1f1726a5cfda7ec48339f2"
-  integrity sha512-M82CX3+igUpRED3HEr5YprjRlVCCROO8W07BJyqKkNHYjnJZhxOl4C93DwtbejIaNuUHlpldx3d23lgYag/SFg==
+"@usecapsule/core-components@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@usecapsule/core-components/-/core-components-1.0.13.tgz#f208c1dddc63949b515d2b642d48438cdb78ef1f"
+  integrity sha512-gR0N4rtDSVtAYb+SV4lc1dyD6ViTQDe0pgYBWc2V1z8StHJNeUdxLtRRZ0TsVt4RPx5/U4Qn/cieYnGIZ2SKaQ==
   dependencies:
     "@stencil/core" "^4.7.0"
     gsap "^3.12.5"
@@ -3765,22 +3765,22 @@
     "@usecapsule/core-sdk" "1.6.0"
     ethers "^6.6.4"
 
-"@usecapsule/react-components@1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@usecapsule/react-components/-/react-components-1.0.12.tgz#414592cf34d7d81033baf95a9574c49e25d51d42"
-  integrity sha512-8hCyEZUDdgaSoxPUOya6H84vFlKiZx96WoS+AvHmyoGbKZkJyVTUmob/7scvD9QERqLQdQIK2zD5ERXSui/mJA==
+"@usecapsule/react-components@1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@usecapsule/react-components/-/react-components-1.0.13.tgz#46feef685fbf6a2716d3ad4d218b35571bee1a31"
+  integrity sha512-Gcql8XBIvKTMrbemHVvyicNTOlsur1CLZRD4fEFJK9ESMkHSgy05VKDd2b3dS3MPquqLOqG3vmpTvsQMsDHfOA==
   dependencies:
-    "@usecapsule/core-components" "^1.0.12"
+    "@usecapsule/core-components" "^1.0.13"
 
-"@usecapsule/react-sdk@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-2.1.2.tgz#69ec4e1101c3ed2e2ee401ede605282f02d62796"
-  integrity sha512-Z+NZK9mlsN96sXNGckwBzgXt+u5uWcKCEKRVfa+0gmQ5MNaF80wtE2QvB53gifIrKbbwFIX3DBXtNxtBwsBG+A==
+"@usecapsule/react-sdk@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-2.2.1.tgz#f1c4c32fc5c16414658b2b52faa094f5f536c4cf"
+  integrity sha512-SNldthymLCfXuTFgDBMQ6Qp4kSRf6gdExcVU6fc2Xw4Q8EOQ5nMdOIdBU/jLXRz5fjfG79EtavpqhCIfwAOXvg==
   dependencies:
     "@gsap/react" "^2.1.0"
     "@ramp-network/ramp-instant-sdk" "^4.0.2"
-    "@usecapsule/react-components" "1.0.12"
-    "@usecapsule/web-sdk" "1.6.2"
+    "@usecapsule/react-components" "1.0.13"
+    "@usecapsule/web-sdk" "1.7.0"
     gsap "^3.12.5"
     styled-components "^6.1.8"
     zustand "^4.5.2"
@@ -3793,10 +3793,10 @@
     axios "^1.6.3"
     qs "^6.12.0"
 
-"@usecapsule/web-sdk@1.6.2", "@usecapsule/web-sdk@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-1.6.2.tgz#ee51cdcda6165b89df8b2a89149c1955987360a3"
-  integrity sha512-NXnuWu2xsVdtJ7UIAPDw8vRLUWWPj7ljPTQKW2As0swQBFMQdOr3vPaCrrUwd85KG5HXmo7DBvU1GAMapfpAxw==
+"@usecapsule/web-sdk@1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-1.7.0.tgz#01b145d64e84fa2b265873000a31a119e9b40a86"
+  integrity sha512-o27C5WFbq5c5+VI5ZsRy1lLGJp9Jwk9TXWUH3sSc6ZFSu+WXHFZiv3i//GblwiV7a1483Pdb4esPZk576f+AhA==
   dependencies:
     "@usecapsule/core-sdk" "1.6.0"
     "@usecapsule/user-management-client" "1.4.0"

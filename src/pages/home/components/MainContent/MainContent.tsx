@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { OAuthMethod } from "@usecapsule/web-sdk";
+import { OAuthMethod } from "@usecapsule/react-sdk";
 import { CapsuleModal, Theme } from "@usecapsule/react-sdk";
 import Header from "../Header/Header";
 import { NFT } from "../NFT/NFT";
