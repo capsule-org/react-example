@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { getBaseUrl } from "@usecapsule/web-sdk";
+import { getBaseUrl } from "@usecapsule/react-sdk";
 import { environment } from "../../clients/capsule";
 import { useFaucetStore } from "../../stores/useFaucetStore";
 import { HAS_USED_FAUCET_QUERY_KEY } from "./useHasUsedFaucet";
