@@ -98,7 +98,8 @@ const MainContent = () => {
           foregroundColor: '#000000',
           backgroundColor: '#FFFFFF',
           font:'Inter',
-          borderRadius: 'md'
+          borderRadius: 'md',
+          oAuthLogoVariant: 'default'
         }}
         oAuthMethods={[
           OAuthMethod.GOOGLE,
