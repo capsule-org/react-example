@@ -3736,70 +3736,73 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@usecapsule/core-components@^1.0.13":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/@usecapsule/core-components/-/core-components-1.0.13.tgz#f208c1dddc63949b515d2b642d48438cdb78ef1f"
-  integrity sha512-gR0N4rtDSVtAYb+SV4lc1dyD6ViTQDe0pgYBWc2V1z8StHJNeUdxLtRRZ0TsVt4RPx5/U4Qn/cieYnGIZ2SKaQ==
+"@usecapsule/core-components@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@usecapsule/core-components/-/core-components-2.0.9.tgz#e61de457ccbe13ed5f2e4ea6672f6750460a8e5f"
+  integrity sha512-4kWXBMQkTN/ZInMFrSCNHSylxgiRAGtW4Lf7kxyA22ZhGCiyJjRjg38C6kYGD2mLmKlVIfUrLnpxX85fq1tlRA==
   dependencies:
     "@stencil/core" "^4.7.0"
+    color2k "^2.0.3"
     gsap "^3.12.5"
+    lottie-web "^5.12.2"
     qr-code-styling "^1.6.0-rc.1"
 
-"@usecapsule/core-sdk@1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/core-sdk/-/core-sdk-1.6.0.tgz#0572194625eceb4c33275c507b8fe99d6a9fb6b9"
-  integrity sha512-QqLFFmCtS8Ndl4T+CwRSl+ul4BWe8GJB4ve03cOisi7J8rduCIjNrzdSOU2nLf6tjAQtWLBERSLgNzp4XVcO/w==
+"@usecapsule/core-sdk@1.10.0-dev.0":
+  version "1.10.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/core-sdk/-/core-sdk-1.10.0-dev.0.tgz#aaac4f5f79753d0fe96823bfeb3a369e644a6eec"
+  integrity sha512-NC25yYkApXPMnKTjP48vs9loDJvjvJthlee56lVct26lcJ/THAsrLcTMVwrkHts9AaFvJ2yr+NalfHOLCMmQCw==
   dependencies:
     "@celo/utils" "^3.2.0"
-    "@usecapsule/user-management-client" "1.4.0"
+    "@usecapsule/user-management-client" "1.7.0-dev.0"
     base64url "^3.0.1"
     buffer "6.0.3"
     ethereumjs-util "7.1.5"
     node-forge "^1.3.1"
 
-"@usecapsule/ethers-v6-integration@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/ethers-v6-integration/-/ethers-v6-integration-1.6.0.tgz#7b541d0c7f89d6e79bbfc7601366cc1c00ace3a6"
-  integrity sha512-Kc35oW5mbfhCP1Vdv3id8sAEDh9IfY+AsmW3a/k6mk4uERZp5+CyH1Cqm9G4XlbH2Xb2PwGShZRjFu5HaLilUw==
+"@usecapsule/ethers-v6-integration@1.10.0-dev.0":
+  version "1.10.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/ethers-v6-integration/-/ethers-v6-integration-1.10.0-dev.0.tgz#7c56c1cbc448528e49746f1d52ccba83dba255de"
+  integrity sha512-jFUWc7DVvLu70EEhTakleINLAKbo9htgZDdD0l2wvlYv9TIvn9mLfvlNmzEDM4h2DciPS9KON6MQaK+Adj1yjw==
   dependencies:
-    "@usecapsule/core-sdk" "1.6.0"
+    "@usecapsule/core-sdk" "1.10.0-dev.0"
     ethers "^6.6.4"
 
-"@usecapsule/react-components@1.0.13":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/@usecapsule/react-components/-/react-components-1.0.13.tgz#46feef685fbf6a2716d3ad4d218b35571bee1a31"
-  integrity sha512-Gcql8XBIvKTMrbemHVvyicNTOlsur1CLZRD4fEFJK9ESMkHSgy05VKDd2b3dS3MPquqLOqG3vmpTvsQMsDHfOA==
+"@usecapsule/react-components@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@usecapsule/react-components/-/react-components-2.0.9.tgz#0058209c96fde052f0617e74b46fce7778d3d906"
+  integrity sha512-xXP+Upgl/fe2r5dDYXACpgcAxmUAH8VVYctwnr/spsIxr92oG5JNRaED/TeILK2MmMDHrDgT7DFbXrhq0KJ19g==
   dependencies:
-    "@usecapsule/core-components" "^1.0.13"
+    "@usecapsule/core-components" "^2.0.9"
 
-"@usecapsule/react-sdk@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-2.2.1.tgz#f1c4c32fc5c16414658b2b52faa094f5f536c4cf"
-  integrity sha512-SNldthymLCfXuTFgDBMQ6Qp4kSRf6gdExcVU6fc2Xw4Q8EOQ5nMdOIdBU/jLXRz5fjfG79EtavpqhCIfwAOXvg==
+"@usecapsule/react-sdk@3.6.1-dev.0":
+  version "3.6.1-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-3.6.1-dev.0.tgz#6aefd8f23410e3bdbdb2ffaa34d5c31fffaa9e24"
+  integrity sha512-A4qMfzuLUx44O3t0NeNrNLPn0McrV/UDdEHcolbLBv+2kCYuksfpWkVE1HHnaxRkLeasC2LXSTi20t790R2aJg==
   dependencies:
     "@gsap/react" "^2.1.0"
     "@ramp-network/ramp-instant-sdk" "^4.0.2"
-    "@usecapsule/react-components" "1.0.13"
-    "@usecapsule/web-sdk" "1.7.0"
+    "@usecapsule/react-components" "^2.0.9"
+    "@usecapsule/web-sdk" "1.12.0-dev.0"
     gsap "^3.12.5"
+    libphonenumber-js "^1.11.1"
     styled-components "^6.1.8"
     zustand "^4.5.2"
 
-"@usecapsule/user-management-client@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-1.4.0.tgz#0742ea5b17485ba9037bebe1dccaa40887a15c61"
-  integrity sha512-i2rAUpZxspPB55ykNPr2MLhoRhzCZjynvt0cnySxYF4MKY7MNUpMNgYFW+D7ZE753EBstjiqgKLlnuYCFt6txQ==
+"@usecapsule/user-management-client@1.7.0-dev.0":
+  version "1.7.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-1.7.0-dev.0.tgz#08e4d79daaff908593a122af5c96af94af976a25"
+  integrity sha512-VmoIoGXTqVr/8nz2PVWMajw+k8dSWytth4iW1pr8st7YWXVPPzaAI+ROoMdRjMFu0cdl/XCTxx+Gbh8aoMHuwg==
   dependencies:
     axios "^1.6.3"
     qs "^6.12.0"
 
-"@usecapsule/web-sdk@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-1.7.0.tgz#01b145d64e84fa2b265873000a31a119e9b40a86"
-  integrity sha512-o27C5WFbq5c5+VI5ZsRy1lLGJp9Jwk9TXWUH3sSc6ZFSu+WXHFZiv3i//GblwiV7a1483Pdb4esPZk576f+AhA==
+"@usecapsule/web-sdk@1.12.0-dev.0":
+  version "1.12.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-1.12.0-dev.0.tgz#105da88e47594778b3d82f1a058aa8e0249daf11"
+  integrity sha512-X/zM0exeAeOnUhh0aS25zawD8XP0aSnuL0qwBHC7S9eTkLYry0upyAycfCTQi9k1XigFYvvK/jmiJBm8nTtIrA==
   dependencies:
-    "@usecapsule/core-sdk" "1.6.0"
-    "@usecapsule/user-management-client" "1.4.0"
+    "@usecapsule/core-sdk" "1.10.0-dev.0"
+    "@usecapsule/user-management-client" "1.7.0-dev.0"
     assert "^2.1.0"
     base64url "3.0.1"
     buffer "6.0.3"
@@ -5179,7 +5182,7 @@ color-name@~1.1.4:
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
-color2k@^2.0.0:
+color2k@^2.0.0, color2k@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/color2k/-/color2k-2.0.3.tgz#a771244f6b6285541c82aa65ff0a0c624046e533"
   integrity sha512-zW190nQTIoXcGCaU08DvVNFTmQhUpnJfVuAKfWqUQkflXKpaDdpaYoM0iluLS9lgJNHyBF58KKA2FBEwkD7wog==
@@ -8988,6 +8991,11 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+libphonenumber-js@^1.11.1:
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.11.2.tgz#9ddd7d1a1e1be0e7c596c7e09487c362b4f1210c"
+  integrity sha512-V9mGLlaXN1WETzqQvSu6qf6XVAr3nFuJvWsHcuzCCCo6xUKawwSxOPTpan5CGOSKTn5w/bQuCZcLPJkyysgC3w==
+
 lilconfig@^2.0.3, lilconfig@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-2.1.0.tgz#78e23ac89ebb7e1bfbf25b18043de756548e7f52"
@@ -9085,6 +9093,11 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+lottie-web@^5.12.2:
+  version "5.12.2"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.12.2.tgz#579ca9fe6d3fd9e352571edd3c0be162492f68e5"
+  integrity sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg==
 
 lower-case@^2.0.2:
   version "2.0.2"
