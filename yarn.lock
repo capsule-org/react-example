@@ -3736,7 +3736,7 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@usecapsule/core-components@^2.0.5":
+"@usecapsule/core-components@^2.0.9":
   version "2.0.9"
   resolved "https://registry.yarnpkg.com/@usecapsule/core-components/-/core-components-2.0.9.tgz#e61de457ccbe13ed5f2e4ea6672f6750460a8e5f"
   integrity sha512-4kWXBMQkTN/ZInMFrSCNHSylxgiRAGtW4Lf7kxyA22ZhGCiyJjRjg38C6kYGD2mLmKlVIfUrLnpxX85fq1tlRA==
@@ -3747,61 +3747,62 @@
     lottie-web "^5.12.2"
     qr-code-styling "^1.6.0-rc.1"
 
-"@usecapsule/core-sdk@1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/core-sdk/-/core-sdk-1.10.0.tgz#7a4a0ba62b4d956a762a4dad5491d39ae76c5ca5"
-  integrity sha512-9Yzl1it9G6EgrDZP3ItWolxVUfgd9M8weY6rNTepObyntIRy9GrkqEXPA4uXwLljaPXNo6ezxs3+jQ2u4pXaWQ==
+"@usecapsule/core-sdk@1.10.0-dev.0":
+  version "1.10.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/core-sdk/-/core-sdk-1.10.0-dev.0.tgz#aaac4f5f79753d0fe96823bfeb3a369e644a6eec"
+  integrity sha512-NC25yYkApXPMnKTjP48vs9loDJvjvJthlee56lVct26lcJ/THAsrLcTMVwrkHts9AaFvJ2yr+NalfHOLCMmQCw==
   dependencies:
     "@celo/utils" "^3.2.0"
-    "@usecapsule/user-management-client" "1.7.0"
+    "@usecapsule/user-management-client" "1.7.0-dev.0"
     base64url "^3.0.1"
     buffer "6.0.3"
     ethereumjs-util "7.1.5"
     node-forge "^1.3.1"
 
-"@usecapsule/ethers-v6-integration@^1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/ethers-v6-integration/-/ethers-v6-integration-1.10.0.tgz#d64edf807b11076d594ef1fb21a1be1218fc1485"
-  integrity sha512-5r7qX2ZfcFaxS6MFJhXhgir8VaB6TlVecjlzHoAZKbDajkaqkmSGD0pEczelgu7wH68hxokoPQYOKzLj2g7fKw==
+"@usecapsule/ethers-v6-integration@1.10.0-dev.0":
+  version "1.10.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/ethers-v6-integration/-/ethers-v6-integration-1.10.0-dev.0.tgz#7c56c1cbc448528e49746f1d52ccba83dba255de"
+  integrity sha512-jFUWc7DVvLu70EEhTakleINLAKbo9htgZDdD0l2wvlYv9TIvn9mLfvlNmzEDM4h2DciPS9KON6MQaK+Adj1yjw==
   dependencies:
-    "@usecapsule/core-sdk" "1.10.0"
+    "@usecapsule/core-sdk" "1.10.0-dev.0"
     ethers "^6.6.4"
 
-"@usecapsule/react-components@2.0.5":
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/@usecapsule/react-components/-/react-components-2.0.5.tgz#1afd31c635cb07b2c5795533e56b4b181750bfef"
-  integrity sha512-wGDSu6fGvyNmF12uRcF4PrYV1WYOwvWz15VM0fV/Q8Wx6AySJqdrRHJuglYc3LNgtwaTHcNc5nltw7jzqxiIbA==
+"@usecapsule/react-components@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@usecapsule/react-components/-/react-components-2.0.9.tgz#0058209c96fde052f0617e74b46fce7778d3d906"
+  integrity sha512-xXP+Upgl/fe2r5dDYXACpgcAxmUAH8VVYctwnr/spsIxr92oG5JNRaED/TeILK2MmMDHrDgT7DFbXrhq0KJ19g==
   dependencies:
-    "@usecapsule/core-components" "^2.0.5"
+    "@usecapsule/core-components" "^2.0.9"
 
-"@usecapsule/react-sdk@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-3.6.0.tgz#b9f0bd3575b4f6784b0063de01ee2f688aa40ccb"
-  integrity sha512-IHwYtP77O/TVdq7h6wSMymRxsL+NMdfVcvVWFQnGxIlsXZLKF5d1JyrdlTWs6QcnrGZGL8Ybz75F5MxVY9TpJA==
+"@usecapsule/react-sdk@3.6.1-dev.0":
+  version "3.6.1-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-3.6.1-dev.0.tgz#6aefd8f23410e3bdbdb2ffaa34d5c31fffaa9e24"
+  integrity sha512-A4qMfzuLUx44O3t0NeNrNLPn0McrV/UDdEHcolbLBv+2kCYuksfpWkVE1HHnaxRkLeasC2LXSTi20t790R2aJg==
   dependencies:
     "@gsap/react" "^2.1.0"
     "@ramp-network/ramp-instant-sdk" "^4.0.2"
-    "@usecapsule/react-components" "2.0.5"
-    "@usecapsule/web-sdk" "1.12.0"
+    "@usecapsule/react-components" "^2.0.9"
+    "@usecapsule/web-sdk" "1.12.0-dev.0"
     gsap "^3.12.5"
+    libphonenumber-js "^1.11.1"
     styled-components "^6.1.8"
     zustand "^4.5.2"
 
-"@usecapsule/user-management-client@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-1.7.0.tgz#ac0a509e5a27b9724738265bf8ac0af6e33aa4bf"
-  integrity sha512-9ZkRnw38YlIYMi0YeaPnsNhBIIwhrI7ZJQv+Qjg/+lMxW8IhBelS1O7Yseum9H3SS1YsTOhhDlWDoNT54fn9Kw==
+"@usecapsule/user-management-client@1.7.0-dev.0":
+  version "1.7.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-1.7.0-dev.0.tgz#08e4d79daaff908593a122af5c96af94af976a25"
+  integrity sha512-VmoIoGXTqVr/8nz2PVWMajw+k8dSWytth4iW1pr8st7YWXVPPzaAI+ROoMdRjMFu0cdl/XCTxx+Gbh8aoMHuwg==
   dependencies:
     axios "^1.6.3"
     qs "^6.12.0"
 
-"@usecapsule/web-sdk@1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-1.12.0.tgz#a1ff5623ebeafc57dfa3a60ae1a1b6e1459ef53b"
-  integrity sha512-AOU1/rNp7bIBjLMsBcjEppGw3iklH3Go9fJAgxKvUO084ge27VC2NZEoSth0dKlpN4b+MHwKWGhzk+IUa//hzw==
+"@usecapsule/web-sdk@1.12.0-dev.0":
+  version "1.12.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-1.12.0-dev.0.tgz#105da88e47594778b3d82f1a058aa8e0249daf11"
+  integrity sha512-X/zM0exeAeOnUhh0aS25zawD8XP0aSnuL0qwBHC7S9eTkLYry0upyAycfCTQi9k1XigFYvvK/jmiJBm8nTtIrA==
   dependencies:
-    "@usecapsule/core-sdk" "1.10.0"
-    "@usecapsule/user-management-client" "1.7.0"
+    "@usecapsule/core-sdk" "1.10.0-dev.0"
+    "@usecapsule/user-management-client" "1.7.0-dev.0"
     assert "^2.1.0"
     base64url "3.0.1"
     buffer "6.0.3"
@@ -8989,6 +8990,11 @@ levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+libphonenumber-js@^1.11.1:
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.11.2.tgz#9ddd7d1a1e1be0e7c596c7e09487c362b4f1210c"
+  integrity sha512-V9mGLlaXN1WETzqQvSu6qf6XVAr3nFuJvWsHcuzCCCo6xUKawwSxOPTpan5CGOSKTn5w/bQuCZcLPJkyysgC3w==
 
 lilconfig@^2.0.3, lilconfig@^2.1.0:
   version "2.1.0"
