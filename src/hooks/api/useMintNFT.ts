@@ -14,6 +14,7 @@ import {
 import { ethersSigner } from "../../clients/ethersSigner";
 import { useNFTStore } from "../../stores/useNFTStore";
 import { HAS_MINTED_NFT_QUERY_KEY } from "./useHasMintedNFT";
+import { TransactionReviewError, openPopup } from "@usecapsule/react-sdk";
 
 const MUTATION_KEY = "MINT_NFT";
 
@@ -54,6 +55,12 @@ export const useMintNFT = (walletAddress: string, walletId: string) => {
     mutationKey: [MUTATION_KEY, walletAddress],
     onError: (e) => {
       console.error("Error Minting: ", e);
+
+      if (e instanceof TransactionReviewError) {
+        console.log(e.transactionReviewUrl);
+        openPopup(e.transactionReviewUrl, 'ReviewTransaction', 'REVIEW_TRANSACTION');
+      }
+      
     },
     onSuccess: () => {
       setHasMintedNFT(walletId);

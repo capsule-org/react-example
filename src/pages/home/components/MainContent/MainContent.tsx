@@ -95,11 +95,11 @@ const MainContent = () => {
         }}
         appName={"Capsule Demo App"}
         theme={{
-          foregroundColor: '#000000',
-          backgroundColor: '#FFFFFF',
-          font:'Inter',
-          borderRadius: 'md',
-          oAuthLogoVariant: 'default'
+          foregroundColor: "#000000",
+          backgroundColor: "#FFFFFF",
+          font: "Inter",
+          borderRadius: "md",
+          oAuthLogoVariant: "default",
         }}
         oAuthMethods={[
           OAuthMethod.GOOGLE,
