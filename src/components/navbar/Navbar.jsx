@@ -33,7 +33,7 @@ const Menu = () => (
 
 const Navbar = () => {
   return (
-    <header className="site-header theme-dark">
+    <header className="site-header theme-dark" style={{ visibility: "hidden" }}>
       <div className="site-header__content">
         <a className="our-logo-container" href="/">
           <Link className="our-logo-container" to="https://usecapsule.com">

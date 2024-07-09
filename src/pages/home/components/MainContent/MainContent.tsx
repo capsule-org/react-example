@@ -24,16 +24,13 @@ const MainContent = () => {
     const isLoggedIn = await capsule.isSessionActive();
     setLoggedIn(isLoggedIn);
 
-    const currentWalletAddress = Object.values(capsule.getWallets())?.[0]
-      ?.address;
-    if (currentWalletAddress !== walletAddress) {
-      setWalletAddress(currentWalletAddress);
+    const currentWallet = capsule.getCurrentWallet();
+    if (currentWallet?.address !== walletAddress) {
+      setWalletAddress(currentWallet.address);
     }
 
-    const currentWalletId =
-      capsule.getWallets()?.[Object.keys(capsule.getWallets())[0]]?.id;
-    if (currentWalletId !== walletId) {
-      setWalletId(currentWalletId);
+    if (currentWallet?.id !== walletId) {
+      setWalletId(currentWallet.id);
     }
   };
 
@@ -62,7 +59,7 @@ const MainContent = () => {
           }}
         >
           <Text color="white" fontSize="14px">
-            {loggedIn ? "Logout" : "Connect"}
+            {loggedIn ? "Logout" : "Connect Wallet"}
           </Text>
         </Button>
       </Flex>
@@ -93,12 +90,13 @@ const MainContent = () => {
           updateLoginStatus();
           setIsOpen(false);
         }}
-        appName={"Capsule Demo App"}
+        appName={"Blue.com"}
+        logo="https://i.imgur.com/rIqjbim.png"
         theme={{
-          foregroundColor: "#000000",
-          backgroundColor: "#FFFFFF",
+          foregroundColor: "#099ae3",
+          backgroundColor: "#181818",
           font: "Inter",
-          borderRadius: "md",
+          borderRadius: "lg",
           oAuthLogoVariant: "default",
         }}
         oAuthMethods={[
@@ -108,6 +106,7 @@ const MainContent = () => {
           OAuthMethod.APPLE,
           OAuthMethod.DISCORD,
         ]}
+        onRampConfig={{ asset: "eth", providers: [{ id: "stripe" }] }}
       />
     </>
   );

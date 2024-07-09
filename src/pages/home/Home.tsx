@@ -1,16 +1,17 @@
 import { Box, Image, Container } from "@chakra-ui/react";
 import MainContent from "./components/MainContent/MainContent";
+import background from "./background.svg";
 
 const Home = () => {
   return (
     <Box backgroundColor="black" minHeight="100vh">
       <Image
         position="absolute"
-        height="90vh"
+        height="100vh"
         width="100%"
         objectFit="cover"
         top={0}
-        src="https://assets.codepen.io/44800/capsule-sunrise-about-hero.svg?"
+        src={background}
         alt=""
       />
       <Container
