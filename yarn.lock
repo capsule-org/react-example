@@ -3770,25 +3770,25 @@
     lottie-web "^5.12.2"
     qr-code-styling "^1.6.0-rc.1"
 
-"@usecapsule/core-sdk@1.18.0-dev.0":
-  version "1.18.0-dev.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/core-sdk/-/core-sdk-1.18.0-dev.0.tgz#a33d193b295c8409961dcc7bdbc7b0b14fdae506"
-  integrity sha512-Oq0gISPoOCLNSEMtVVNjO1x+Zy3kDkcSj/6+BpeetaFQW7+05XtG8Iz+JQ5vA4TvUI0sNQRvTi78pZvpI5w59A==
+"@usecapsule/core-sdk@1.20.0-dev.0":
+  version "1.20.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/core-sdk/-/core-sdk-1.20.0-dev.0.tgz#5658c080b2a269e192ed8be3f397394b35c278ff"
+  integrity sha512-Qdg33QR6pDHjEJDss02eDHnHSVYsez3O7/iIvTTLCTgpQmY4e86ZBg4b9gzz3o0O1rXlY7VptR7mRn/6P/bnUg==
   dependencies:
     "@celo/utils" "^3.2.0"
-    "@usecapsule/user-management-client" "1.15.0-dev.0"
+    "@usecapsule/user-management-client" "1.17.0-dev.0"
     base64url "^3.0.1"
     buffer "6.0.3"
     ethereumjs-util "7.1.5"
     libphonenumber-js "1.11.2"
     node-forge "^1.3.1"
 
-"@usecapsule/ethers-v6-integration@1.18.0-dev.0":
-  version "1.18.0-dev.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/ethers-v6-integration/-/ethers-v6-integration-1.18.0-dev.0.tgz#e3920bc4eb1a3efaf7a5af3d3f3276f6c695efbf"
-  integrity sha512-y1jzQPQWVUR6S47L+6jQxL46OXfv4404a096P4KLKTp5jyaPvRToN2F3CoobpS2cwExs2+z9hxprZtmzAa9P7A==
+"@usecapsule/ethers-v6-integration@1.20.0-dev.0":
+  version "1.20.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/ethers-v6-integration/-/ethers-v6-integration-1.20.0-dev.0.tgz#3a687f5e1cf868aaf7ba235275404f60f683a665"
+  integrity sha512-0QMxgL5uitGlUP26rQKwF5yp6YHe1oTO+xcxKuK1+UPevI9wFuHM/VswlDhsJ5gyzbQ1Vf+kALghyEQXfOqeXw==
   dependencies:
-    "@usecapsule/core-sdk" "1.18.0-dev.0"
+    "@usecapsule/core-sdk" "1.20.0-dev.0"
     ethers "^6.6.4"
 
 "@usecapsule/react-components@^3.1.2":
@@ -3798,38 +3798,38 @@
   dependencies:
     "@usecapsule/core-components" "^3.1.2"
 
-"@usecapsule/react-sdk@3.14.0-dev.0":
-  version "3.14.0-dev.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-3.14.0-dev.0.tgz#4e78374dea94c16c091fe15b2e6b4c34fe9dfa38"
-  integrity sha512-bja03sPOXFLdlx8c/Wu6RV4fE/Iz5PPos0ga5TLoxiFSCWymCWFTV/l7UERG0ty7eIuXeRb7rhQw53/2P+EZuQ==
+"@usecapsule/react-sdk@3.16.0-dev.0":
+  version "3.16.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/react-sdk/-/react-sdk-3.16.0-dev.0.tgz#77582da2501ade034867a0441479df89c3d83d15"
+  integrity sha512-icZERalL2FrIT0KatRagLFoBt+dA9f/zqT73+HjxHr8lBNUCEfG9gvBSCXNWxK06dKMuLj5WmtWFIM/Z4WFbgw==
   dependencies:
     "@gsap/react" "^2.1.0"
     "@ramp-network/ramp-instant-sdk" "^4.0.2"
     "@stripe/crypto" "^0.0.4"
     "@stripe/stripe-js" "^3.4.0"
     "@usecapsule/react-components" "^3.1.2"
-    "@usecapsule/web-sdk" "1.20.0-dev.0"
+    "@usecapsule/web-sdk" "1.22.0-dev.0"
     date-fns "^3.6.0"
     gsap "^3.12.5"
     libphonenumber-js "^1.11.1"
     styled-components "^6.1.8"
     zustand "^4.5.2"
 
-"@usecapsule/user-management-client@1.15.0-dev.0":
-  version "1.15.0-dev.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-1.15.0-dev.0.tgz#240cf61f4828d6947fba61e5955f1d498cad50a5"
-  integrity sha512-IHSePCMLJai7qr+Ay08DLNLHecfzwqMLXJiiyz3Btp6bLWINYHgiiKZzst505VoevtPS9CK6F2vS02k4W7mfvA==
+"@usecapsule/user-management-client@1.17.0-dev.0":
+  version "1.17.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/user-management-client/-/user-management-client-1.17.0-dev.0.tgz#2e0f950591b5d05cb54d0425e18deb2651011754"
+  integrity sha512-/pOqhWyMjSTj4paaJabskotPxqF/DsU3GKzatA+rCb6INimGgn4mZwt9wY2afiRoLAn5v7Fi4CL1B4D4bUROvw==
   dependencies:
     axios "^1.6.3"
     qs "^6.12.0"
 
-"@usecapsule/web-sdk@1.20.0-dev.0":
-  version "1.20.0-dev.0"
-  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-1.20.0-dev.0.tgz#e4d46df483570b71eb6830c7bab8b15f53a9bb4e"
-  integrity sha512-Z0vgXe36tSXVpqztUR5jVdGroyK6NKLNHbeOMfvRnXunsBxqF/TSJ7cZfHk4Zfqw3kDMvZ0FTyJVhI1XCYSn/Q==
+"@usecapsule/web-sdk@1.22.0-dev.0":
+  version "1.22.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@usecapsule/web-sdk/-/web-sdk-1.22.0-dev.0.tgz#5936949bb6f3065b93b63d8b861b4c1cd9f8982b"
+  integrity sha512-wVtPOU5CsKkfCFs0n7r2gSRSUkU7JC+b+Z21cfVVHWfUN1U5Fbr1lMt1BNeXI0X8CHcChYFw4BK9XJmss5fq+g==
   dependencies:
-    "@usecapsule/core-sdk" "1.18.0-dev.0"
-    "@usecapsule/user-management-client" "1.15.0-dev.0"
+    "@usecapsule/core-sdk" "1.20.0-dev.0"
+    "@usecapsule/user-management-client" "1.17.0-dev.0"
     assert "^2.1.0"
     base64url "3.0.1"
     buffer "6.0.3"
