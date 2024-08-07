@@ -24,7 +24,7 @@ const Menu = () => (
       className="nav-link ui-button size-small style-border"
       target="_blank"
       rel="noreferrer"
-      to="https://7f4shq8oyfd.typeform.com/to/F86oVLhb"
+      to="https://usecapsule.com/api"
     >
       Get&nbsp;Access
     </Link>
